@@ -1,0 +1,31 @@
+{
+  "name": "mapfusiondesktop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Desktop app for the OSM and GeoJSON map pipeline projects.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "start:merged": "node scripts/runMergedProject.js",
+    "check": "node --check main.js && node --check preload.js && node --check renderer.js && node --check scripts/runMergedProject.js",
+    "dist": "electron-builder --win --dir",
+    "build": "electron-builder --win --dir",
+    "build:installer": "electron-builder --win"
+  },
+  "build": {
+    "appId": "com.mapfusiondesktop.app",
+    "productName": "MapFusionDesktop",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "dir",
+      "sign": false,
+      "signAndEditExecutable": false
+    }
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.0"
+  }
+}

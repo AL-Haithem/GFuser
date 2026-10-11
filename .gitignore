@@ -1,0 +1,13 @@
+node_modules/
+Data/node_modules/
+MapPipeline/node_modules/
+dist/
+Data/world/
+MapPipeline/output/
+*.gpkg
+*.pmtiles
+*.geojson
+*.log
+.vscode/
+.DS_Store
+Thumbs.db

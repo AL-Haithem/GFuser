@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MapFusion Desktop</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <h1>MapFusion</h1>
+        <p class="subtitle">Single desktop map pipeline</p>
+
+        <button id="run-merged" class="primary">Run full map pipeline</button>
+
+        <div class="info-box">
+          <h3>Included steps</h3>
+          <ul>
+            <li>OSM to GeoPackage</li>
+            <li>GeoJSON map generation</li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="content">
+        <header>
+          <h2>Project Console</h2>
+        </header>
+
+        <div id="status" class="status-box">Ready</div>
+        <pre id="output" class="output-box">Press the button to start the merged pipeline.</pre>
+      </main>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

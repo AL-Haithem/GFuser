@@ -1,0 +1,129 @@
+:root {
+  --bg: #0b1220;
+  --panel: #111b2e;
+  --panel-2: #17263f;
+  --text: #edf3ff;
+  --muted: #9bb3d1;
+  --primary: #4ea1ff;
+  --primary-strong: #1d6ae8;
+  --success: #2ecc71;
+  --warning: #f39c12;
+  --error: #e74c3c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #0b1220, #101f36);
+  color: var(--text);
+}
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 280px;
+  padding: 28px 22px;
+  background: rgba(17, 27, 46, 0.95);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+button {
+  width: 100%;
+  margin-bottom: 14px;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+button.primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+  color: white;
+}
+
+button.secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+}
+
+.info-box {
+  margin-top: 30px;
+  background: rgba(23, 38, 63, 0.7);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.info-box ul {
+  margin: 12px 0 0 18px;
+  color: var(--muted);
+}
+
+.content {
+  flex: 1;
+  padding: 28px;
+}
+
+header h2 {
+  margin-top: 0;
+  font-size: 1.6rem;
+}
+
+.status-box {
+  padding: 14px 16px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+}
+
+.status-box.pending {
+  background: rgba(243, 156, 18, 0.15);
+  color: #ffd48a;
+}
+
+.status-box.success {
+  background: rgba(46, 204, 113, 0.14);
+  color: #9df0b5;
+}
+
+.status-box.error {
+  background: rgba(231, 76, 60, 0.12);
+  color: #ffb3aa;
+}
+
+.output-box {
+  min-height: 520px;
+  padding: 18px;
+  overflow: auto;
+  background: rgba(5, 10, 18, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  white-space: pre-wrap;
+  color: var(--muted);
+  line-height: 1.5;
+}

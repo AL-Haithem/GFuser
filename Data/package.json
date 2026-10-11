@@ -1,0 +1,14 @@
+{
+  "name": "admin-boundary-processor",
+  "version": "1.0.0",
+  "description": "Extract administrative boundaries from OSM PBF and export a GeoPackage.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "check": "node --check index.js && node --check src/index.js && node --check src/config/config.js && node --check src/utils/logger.js && node --check src/utils/commandRunner.js && node --check src/utils/fileUtils.js && node --check src/pipeline/extractOsm.js && node --check src/pipeline/convertToGeoPackage.js && node --check src/pipeline/runPipeline.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

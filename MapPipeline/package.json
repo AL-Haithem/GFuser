@@ -1,0 +1,12 @@
+{
+  "name": "data",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "generate": "node generate.js",
+    "validate": "node validate-output.js"
+  },
+  "dependencies": {
+    "@turf/point-on-feature": "^7.4.0"
+  }
+}
