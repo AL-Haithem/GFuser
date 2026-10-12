@@ -1,15 +1,21 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, net, protocol } = require('electron');
 const { autoUpdater } = require('electron-updater');
 const path = require('path');
+const { pathToFileURL } = require('url');
 const { spawn } = require('child_process');
+
+protocol.registerSchemesAsPrivileged([{
+  scheme: 'mapfusion',
+  privileges: { standard: true, secure: true, supportFetchAPI: true, corsEnabled: true, stream: true },
+}]);
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 1100,
-    height: 760,
-    minWidth: 900,
-    minHeight: 620,
-    backgroundColor: '#0b1220',
+    width: 1480,
+    height: 940,
+    minWidth: 960,
+    minHeight: 680,
+    backgroundColor: '#f4f5f1',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -18,7 +24,11 @@ function createWindow() {
     },
   });
 
-  win.loadFile(path.join(__dirname, 'index.html'));
+  if (process.env.VITE_DEV_SERVER_URL) {
+    win.loadURL(process.env.VITE_DEV_SERVER_URL);
+  } else {
+    win.loadURL('mapfusion://app/index.html');
+  }
 }
 
 function runMergedProject() {
@@ -62,6 +72,16 @@ function checkForUpdates() {
 }
 
 app.whenReady().then(() => {
+  const distDirectory = path.resolve(__dirname, 'dist');
+  protocol.handle('mapfusion', (request) => {
+    const requestedPath = decodeURIComponent(new URL(request.url).pathname).replace(/^[/\\]+/, '') || 'index.html';
+    const filePath = path.resolve(distDirectory, requestedPath);
+    if (!filePath.startsWith(`${distDirectory}${path.sep}`)) {
+      return new Response('Forbidden', { status: 403 });
+    }
+    return net.fetch(pathToFileURL(filePath).toString());
+  });
+
   ipcMain.handle('run-merged-project', async () => {
     return runMergedProject();
   });
