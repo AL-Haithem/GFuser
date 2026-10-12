@@ -10,7 +10,7 @@
     "check": "node --check main.js && node --check preload.js && node --check renderer.js && node --check scripts/runMergedProject.js",
     "dist": "electron-builder --win --dir",
     "build": "electron-builder --win --dir",
-    "build:installer": "electron-builder --win"
+    "build:installer": "electron-builder --win nsis"
   },
   "build": {
     "appId": "com.mapfusiondesktop.app",
@@ -20,12 +20,25 @@
     },
     "win": {
       "target": "dir",
-      "sign": false,
       "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "AL-Haithem",
+      "repo": "GEOProcessing"
     }
   },
   "devDependencies": {
     "electron": "^31.0.0",
     "electron-builder": "^24.13.0"
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.9"
   }
 }

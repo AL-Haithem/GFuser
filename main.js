@@ -1,4 +1,5 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
+const { autoUpdater } = require('electron-updater');
 const path = require('path');
 const { spawn } = require('child_process');
 
@@ -52,12 +53,21 @@ function runMergedProject() {
   });
 }
 
+function checkForUpdates() {
+  if (!app.isPackaged) return;
+
+  autoUpdater.checkForUpdatesAndNotify().catch((error) => {
+    console.error('Automatic update check failed:', error);
+  });
+}
+
 app.whenReady().then(() => {
   ipcMain.handle('run-merged-project', async () => {
     return runMergedProject();
   });
 
   createWindow();
+  checkForUpdates();
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
