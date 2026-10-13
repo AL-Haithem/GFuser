@@ -34,6 +34,8 @@ import {
 
 const sourcePrefix = 'mapfusion-source-';
 const colors = ['#63a875', '#df8e68', '#6a91c7', '#c19a4b', '#a47bb5'];
+const lightMapStyle = 'https://tiles.openfreemap.org/styles/liberty';
+const darkMapStyle = 'https://tiles.openfreemap.org/styles/dark';
 
 function getBounds(data) {
   const bounds = [[Infinity, Infinity], [-Infinity, -Infinity]];
@@ -95,6 +97,8 @@ function App() {
       return 'light';
     }
   });
+  const mapThemeRef = useRef(theme);
+  const [mapStyleRevision, setMapStyleRevision] = useState(0);
   const [updateState, setUpdateState] = useState({
     status: 'idle',
     currentVersion: '',
@@ -118,7 +122,7 @@ function App() {
   useEffect(() => {
     const map = new MapLibreMap({
       container: mapContainerRef.current,
-      style: 'https://tiles.openfreemap.org/styles/liberty',
+      style: theme === 'dark' ? darkMapStyle : lightMapStyle,
       center: [12, 22],
       zoom: 2.1,
       minZoom: 1,
@@ -142,6 +146,14 @@ function App() {
       mapRef.current = null;
     };
   }, []);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || mapThemeRef.current === theme) return;
+    mapThemeRef.current = theme;
+    map.once('style.load', () => setMapStyleRevision((revision) => revision + 1));
+    map.setStyle(theme === 'dark' ? darkMapStyle : lightMapStyle, { diff: false });
+  }, [theme]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -188,7 +200,7 @@ function App() {
       });
       mapLayerIdsRef.current.push(fillId, lineId, pointId);
     });
-  }, [layers, mapReady]);
+  }, [layers, mapReady, mapStyleRevision]);
 
   useEffect(() => {
     const api = window.appAPI;
