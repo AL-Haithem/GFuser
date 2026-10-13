@@ -19,12 +19,14 @@ import {
   Layers3,
   Map as MapIcon,
   MoreHorizontal,
+  Moon,
   MousePointer2,
   Plus,
   RefreshCw,
   Search,
   Settings2,
   Shapes,
+  Sun,
   Trash2,
   Upload,
   X,
@@ -86,6 +88,13 @@ function App() {
   const [runOutput, setRunOutput] = useState('');
   const [showRunOutput, setShowRunOutput] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    try {
+      return window.localStorage.getItem('mapfusion-theme') === 'dark' ? 'dark' : 'light';
+    } catch {
+      return 'light';
+    }
+  });
   const [updateState, setUpdateState] = useState({
     status: 'idle',
     currentVersion: '',
@@ -202,6 +211,15 @@ function App() {
     setToast(message);
     window.clearTimeout(notify.timeout);
     notify.timeout = window.setTimeout(() => setToast(''), 3600);
+  }
+
+  function changeTheme(nextTheme) {
+    setTheme(nextTheme);
+    try {
+      window.localStorage.setItem('mapfusion-theme', nextTheme);
+    } catch {
+      notify('Theme will reset when the app closes because local storage is unavailable.');
+    }
   }
 
   async function checkForUpdates() {
@@ -397,7 +415,7 @@ function App() {
   }
 
   return (
-    <div className="app-shell">
+    <div className={`app-shell ${theme === 'dark' ? 'theme-dark' : ''}`}>
       <aside className="tool-rail" aria-label="Primary tools">
         <div className="brand-mark"><MapIcon size={20} strokeWidth={2.4} /></div>
         <button className={`rail-button ${showSettings ? '' : 'selected'}`} onClick={() => setShowSettings(false)} aria-label="Map workspace" title="Map workspace"><Layers3 size={19} /></button>
@@ -538,6 +556,14 @@ function App() {
               <button className="icon-button" onClick={() => setShowSettings(false)} aria-label="Close settings"><X size={18} /></button>
             </header>
             <div className="settings-content">
+              <section className="appearance-setting" aria-labelledby="appearance-title">
+                <div className="settings-section-heading"><div><strong id="appearance-title">Appearance</strong><p>Choose the workspace color theme.</p></div></div>
+                <div className="theme-segment" role="group" aria-label="Color theme">
+                  <button type="button" className={theme === 'light' ? 'active' : ''} aria-pressed={theme === 'light'} onClick={() => changeTheme('light')}><Sun size={14} />Light</button>
+                  <button type="button" className={theme === 'dark' ? 'active' : ''} aria-pressed={theme === 'dark'} onClick={() => changeTheme('dark')}><Moon size={14} />Dark</button>
+                </div>
+              </section>
+              <div className="settings-divider" />
               <section className={`update-overview update-${updateState.status}`} aria-live="polite">
                 <span className="update-state-icon">
                   {updateState.status === 'error' ? <CircleAlert size={19} /> : updateState.status === 'up-to-date' || updateState.status === 'downloaded' ? <CircleCheck size={19} /> : <RefreshCw size={18} className={updateState.status === 'checking' || updateState.status === 'downloading' ? 'spinning' : ''} />}
