@@ -2,6 +2,7 @@ node_modules/
 Data/node_modules/
 MapPipeline/node_modules/
 dist/
+release/
 Data/world/
 MapPipeline/output/
 *.gpkg

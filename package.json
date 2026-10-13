@@ -1,6 +1,6 @@
 {
   "name": "mapfusiondesktop",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "description": "A desktop workspace for inspecting and preparing geographic datasets.",
   "main": "main.js",
@@ -18,7 +18,7 @@
     "appId": "com.mapfusiondesktop.app",
     "productName": "MapFusionDesktop",
     "directories": {
-      "output": "dist"
+      "output": "release"
     },
     "win": {
       "target": "dir",
