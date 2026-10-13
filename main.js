@@ -3,7 +3,6 @@ const { autoUpdater } = require('electron-updater');
 const fs = require('fs');
 const path = require('path');
 const { pathToFileURL } = require('url');
-const { spawn } = require('child_process');
 
 let updateSettings = { automaticUpdatesEnabled: true };
 let updateState = {
@@ -41,38 +40,6 @@ function createWindow() {
   } else {
     mainWindow.loadURL('mapfusion://app/index.html');
   }
-}
-
-function runMergedProject() {
-  return new Promise((resolve, reject) => {
-    const scriptPath = path.join(__dirname, 'scripts', 'runMergedProject.js');
-    const child = spawn(process.execPath, [scriptPath], {
-      cwd: __dirname,
-      shell: false,
-      windowsHide: true,
-    });
-    let output = '';
-
-    child.stdout.on('data', (chunk) => {
-      output += chunk.toString();
-    });
-
-    child.stderr.on('data', (chunk) => {
-      output += chunk.toString();
-    });
-
-    child.on('error', (error) => {
-      reject(error);
-    });
-
-    child.on('close', (code) => {
-      if (code === 0) {
-        resolve(output || 'Merged map pipeline finished successfully.');
-      } else {
-        reject(new Error(output || `Merged map pipeline exited with code ${code}.`));
-      }
-    });
-  });
 }
 
 function getUpdateSettingsPath() {
@@ -169,10 +136,6 @@ app.whenReady().then(() => {
       return new Response('Forbidden', { status: 403 });
     }
     return net.fetch(pathToFileURL(filePath).toString());
-  });
-
-  ipcMain.handle('run-merged-project', async () => {
-    return runMergedProject();
   });
 
   updateSettings = loadUpdateSettings();
