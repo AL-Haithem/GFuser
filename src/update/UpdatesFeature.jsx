@@ -1,20 +1,6 @@
 import { CircleAlert, CircleCheck, Download, RefreshCw } from 'lucide-react';
 import './updates.css';
 
-export function UpdateStatusCard({ statusLabel, automaticUpdatesEnabled }) {
-  return (
-    <section className="info-card update-summary-feature">
-      <div className="card-header">
-        <div><span className="eyebrow">APP STATUS</span><h3>Desktop workspace</h3></div>
-        <span className="online-dot" />
-      </div>
-      <p>Projects and software updates are managed from this desktop app.</p>
-      <div className="status-row"><span>Update state</span><strong>{statusLabel}</strong></div>
-      <div className="status-row"><span>Automatic updates</span><strong>{automaticUpdatesEnabled ? 'Enabled' : 'Disabled'}</strong></div>
-    </section>
-  );
-}
-
 export function UpdateSettings({ updateState, statusLabel, pending, preferencePending, onCheck, onPreferenceChange, onDownload, onInstall }) {
   const isBusy = updateState.status === 'checking' || updateState.status === 'downloading';
   return (
