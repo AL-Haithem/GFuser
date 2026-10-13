@@ -13,6 +13,7 @@ let updateState = {
   progress: 0,
   message: 'Updates have not been checked yet.',
 };
+let mainWindow;
 
 protocol.registerSchemesAsPrivileged([{
   scheme: 'mapfusion',
@@ -20,7 +21,7 @@ protocol.registerSchemesAsPrivileged([{
 }]);
 
 function createWindow() {
-  const win = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 1480,
     height: 940,
     minWidth: 960,
@@ -33,12 +34,12 @@ function createWindow() {
       enableRemoteModule: false,
     },
   });
-  win.removeMenu();
+  mainWindow.removeMenu();
 
   if (process.env.VITE_DEV_SERVER_URL) {
-    win.loadURL(process.env.VITE_DEV_SERVER_URL);
+    mainWindow.loadURL(process.env.VITE_DEV_SERVER_URL);
   } else {
-    win.loadURL('mapfusion://app/index.html');
+    mainWindow.loadURL('mapfusion://app/index.html');
   }
 }
 
