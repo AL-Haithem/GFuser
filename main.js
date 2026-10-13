@@ -1,8 +1,18 @@
 const { app, BrowserWindow, ipcMain, net, protocol } = require('electron');
 const { autoUpdater } = require('electron-updater');
+const fs = require('fs');
 const path = require('path');
 const { pathToFileURL } = require('url');
 const { spawn } = require('child_process');
+
+let updateSettings = { automaticUpdatesEnabled: true };
+let updateState = {
+  status: 'idle',
+  currentVersion: app.getVersion(),
+  automaticUpdatesEnabled: true,
+  progress: 0,
+  message: 'Updates have not been checked yet.',
+};
 
 protocol.registerSchemesAsPrivileged([{
   scheme: 'mapfusion',
@@ -63,11 +73,88 @@ function runMergedProject() {
   });
 }
 
-function checkForUpdates() {
-  if (!app.isPackaged) return;
+function getUpdateSettingsPath() {
+  return path.join(app.getPath('userData'), 'settings.json');
+}
 
-  autoUpdater.checkForUpdatesAndNotify().catch((error) => {
-    console.error('Automatic update check failed:', error);
+function loadUpdateSettings() {
+  try {
+    const settings = JSON.parse(fs.readFileSync(getUpdateSettingsPath(), 'utf8'));
+    return { automaticUpdatesEnabled: settings.automaticUpdatesEnabled !== false };
+  } catch {
+    return { automaticUpdatesEnabled: true };
+  }
+}
+
+function saveUpdateSettings() {
+  const settingsPath = getUpdateSettingsPath();
+  fs.mkdirSync(path.dirname(settingsPath), { recursive: true });
+  fs.writeFileSync(settingsPath, JSON.stringify(updateSettings, null, 2));
+}
+
+function getUpdateState() {
+  return {
+    ...updateState,
+    currentVersion: app.getVersion(),
+    automaticUpdatesEnabled: updateSettings.automaticUpdatesEnabled,
+  };
+}
+
+function publishUpdateState(changes) {
+  updateState = { ...updateState, ...changes };
+  const state = getUpdateState();
+  BrowserWindow.getAllWindows().forEach((win) => win.webContents.send('update-state', state));
+}
+
+async function checkForUpdates() {
+  if (!app.isPackaged) {
+    publishUpdateState({ status: 'error', message: 'Update checks are available in an installed build.' });
+    return getUpdateState();
+  }
+
+  publishUpdateState({ status: 'checking', progress: 0, message: 'Checking for updates...' });
+  try {
+    await autoUpdater.checkForUpdates();
+  } catch (error) {
+    publishUpdateState({ status: 'error', message: error.message || 'Could not check for updates.' });
+  }
+  return getUpdateState();
+}
+
+function configureAutoUpdater() {
+  autoUpdater.autoDownload = updateSettings.automaticUpdatesEnabled;
+  autoUpdater.autoInstallOnAppQuit = true;
+  autoUpdater.on('checking-for-update', () => {
+    publishUpdateState({ status: 'checking', progress: 0, message: 'Checking for updates...' });
+  });
+  autoUpdater.on('update-available', (info) => {
+    publishUpdateState({
+      status: 'available',
+      availableVersion: info.version,
+      progress: 0,
+      message: `Version ${info.version} is available.`,
+    });
+  });
+  autoUpdater.on('update-not-available', () => {
+    publishUpdateState({ status: 'up-to-date', availableVersion: null, progress: 0, message: 'You are using the latest version.' });
+  });
+  autoUpdater.on('download-progress', (progress) => {
+    publishUpdateState({
+      status: 'downloading',
+      progress: Math.round(progress.percent),
+      message: `Downloading update... ${Math.round(progress.percent)}%`,
+    });
+  });
+  autoUpdater.on('update-downloaded', (info) => {
+    publishUpdateState({
+      status: 'downloaded',
+      availableVersion: info.version,
+      progress: 100,
+      message: `Version ${info.version} is ready to install.`,
+    });
+  });
+  autoUpdater.on('error', (error) => {
+    publishUpdateState({ status: 'error', message: error.message || 'The update process failed.' });
   });
 }
 
@@ -86,8 +173,38 @@ app.whenReady().then(() => {
     return runMergedProject();
   });
 
+  updateSettings = loadUpdateSettings();
+  updateState.automaticUpdatesEnabled = updateSettings.automaticUpdatesEnabled;
+  configureAutoUpdater();
+
+  ipcMain.handle('get-update-state', () => getUpdateState());
+  ipcMain.handle('check-for-updates', () => checkForUpdates());
+  ipcMain.handle('set-automatic-updates', async (_event, enabled) => {
+    if (typeof enabled !== 'boolean') throw new TypeError('Automatic updates must be a boolean.');
+    updateSettings = { automaticUpdatesEnabled: enabled };
+    saveUpdateSettings();
+    autoUpdater.autoDownload = enabled;
+    publishUpdateState({ automaticUpdatesEnabled: enabled });
+    if (enabled) return checkForUpdates();
+    return getUpdateState();
+  });
+  ipcMain.handle('download-update', async () => {
+    if (!app.isPackaged) throw new Error('Update downloads are available in an installed build.');
+    try {
+      await autoUpdater.downloadUpdate();
+      return getUpdateState();
+    } catch (error) {
+      publishUpdateState({ status: 'error', message: error.message || 'Could not download the update.' });
+      return getUpdateState();
+    }
+  });
+  ipcMain.handle('install-update', () => {
+    if (updateState.status !== 'downloaded') throw new Error('There is no downloaded update to install.');
+    autoUpdater.quitAndInstall();
+  });
+
   createWindow();
-  checkForUpdates();
+  if (app.isPackaged && updateSettings.automaticUpdatesEnabled) checkForUpdates();
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();

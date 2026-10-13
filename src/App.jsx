@@ -7,8 +7,11 @@ import {
   Braces,
   Check,
   ChevronDown,
+  CircleAlert,
+  CircleCheck,
   CircleHelp,
   Database,
+  Download,
   Eye,
   EyeOff,
   FilePlus2,
@@ -82,6 +85,16 @@ function App() {
   const [isRunning, setIsRunning] = useState(false);
   const [runOutput, setRunOutput] = useState('');
   const [showRunOutput, setShowRunOutput] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [updateState, setUpdateState] = useState({
+    status: 'idle',
+    currentVersion: '',
+    automaticUpdatesEnabled: true,
+    progress: 0,
+    message: 'Loading update settings...',
+  });
+  const [updateActionPending, setUpdateActionPending] = useState(false);
+  const [preferencePending, setPreferencePending] = useState(false);
   const [filter, setFilter] = useState('');
 
   const activeLayer = layers.find((layer) => layer.id === activeLayerId) ?? null;
@@ -168,11 +181,94 @@ function App() {
     });
   }, [layers, mapReady]);
 
+  useEffect(() => {
+    const api = window.appAPI;
+    if (!api?.getUpdateState) return undefined;
+    let subscribed = true;
+    const applyState = (state) => {
+      if (subscribed) setUpdateState((current) => ({ ...current, ...state }));
+    };
+    const unsubscribe = api.onUpdateState?.(applyState);
+    api.getUpdateState().then(applyState).catch((error) => {
+      applyState({ status: 'error', message: error.message || 'Could not load update settings.' });
+    });
+    return () => {
+      subscribed = false;
+      unsubscribe?.();
+    };
+  }, []);
+
   function notify(message) {
     setToast(message);
     window.clearTimeout(notify.timeout);
     notify.timeout = window.setTimeout(() => setToast(''), 3600);
   }
+
+  async function checkForUpdates() {
+    if (!window.appAPI?.checkForUpdates) {
+      notify('Update checks are available in the installed desktop app.');
+      return;
+    }
+    setUpdateActionPending(true);
+    try {
+      const state = await window.appAPI.checkForUpdates();
+      if (state) setUpdateState((current) => ({ ...current, ...state }));
+    } catch (error) {
+      setUpdateState((current) => ({ ...current, status: 'error', message: error.message || 'Could not check for updates.' }));
+    } finally {
+      setUpdateActionPending(false);
+    }
+  }
+
+  async function changeAutomaticUpdates(event) {
+    const enabled = event.target.checked;
+    setPreferencePending(true);
+    try {
+      const state = await window.appAPI.setAutomaticUpdatesEnabled(enabled);
+      if (state) setUpdateState((current) => ({ ...current, ...state }));
+    } catch (error) {
+      notify(error.message || 'Could not save the update preference.');
+    } finally {
+      setPreferencePending(false);
+    }
+  }
+
+  async function downloadUpdate() {
+    setUpdateActionPending(true);
+    try {
+      const state = await window.appAPI.downloadUpdate();
+      if (state) setUpdateState((current) => ({ ...current, ...state }));
+    } catch (error) {
+      setUpdateState((current) => ({ ...current, status: 'error', message: error.message || 'Could not download the update.' }));
+    } finally {
+      setUpdateActionPending(false);
+    }
+  }
+
+  async function installUpdate() {
+    setUpdateActionPending(true);
+    try {
+      await window.appAPI.installUpdate();
+    } catch (error) {
+      setUpdateActionPending(false);
+      notify(error.message || 'Could not install the update.');
+    }
+  }
+
+  const updateStatusLabels = {
+    idle: 'Not checked',
+    checking: 'Checking',
+    available: 'Update available',
+    downloading: 'Downloading',
+    downloaded: 'Ready to install',
+    'up-to-date': 'Up to date',
+    error: 'Check failed',
+  };
+  const updateStatusLabel = updateStatusLabels[updateState.status] ?? 'Update status';
+
+  useEffect(() => {
+    if (['available', 'downloaded', 'error'].includes(updateState.status)) notify(updateState.message);
+  }, [updateState.status, updateState.message]);
 
   function openImporter() {
     fileInputRef.current?.click();
@@ -304,10 +400,10 @@ function App() {
     <div className="app-shell">
       <aside className="tool-rail" aria-label="Primary tools">
         <div className="brand-mark"><MapIcon size={20} strokeWidth={2.4} /></div>
-        <button className="rail-button selected" aria-label="Map workspace" title="Map workspace"><Layers3 size={19} /></button>
+        <button className={`rail-button ${showSettings ? '' : 'selected'}`} onClick={() => setShowSettings(false)} aria-label="Map workspace" title="Map workspace"><Layers3 size={19} /></button>
         <button className="rail-button" onClick={openImporter} aria-label="Add data" title="Add data"><FilePlus2 size={19} /></button>
         <div className="rail-spacer" />
-        <button className="rail-button" onClick={() => notify('Project settings are not available in this MVP.')} aria-label="Settings" title="Settings"><Settings2 size={19} /></button>
+        <button className={`rail-button ${showSettings ? 'selected' : ''}`} onClick={() => setShowSettings(true)} aria-label="Settings" title="Settings"><Settings2 size={19} /></button>
         <button className="rail-button" onClick={() => notify('Help is not available in this MVP.')} aria-label="Help" title="Help"><CircleHelp size={19} /></button>
         <div className="avatar">MF</div>
       </aside>
@@ -434,6 +530,54 @@ function App() {
       </main>
 
       <input ref={fileInputRef} className="visually-hidden" type="file" multiple accept=".geojson,.json,.shp,.gpkg,.pbf,.pmtiles" onChange={importFiles} />
+      {showSettings && (
+        <div className="modal-backdrop settings-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setShowSettings(false); }}>
+          <section className="settings-dialog" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+            <header>
+              <div><span className="eyebrow">APPLICATION</span><h2 id="settings-title">Settings</h2></div>
+              <button className="icon-button" onClick={() => setShowSettings(false)} aria-label="Close settings"><X size={18} /></button>
+            </header>
+            <div className="settings-content">
+              <section className={`update-overview update-${updateState.status}`} aria-live="polite">
+                <span className="update-state-icon">
+                  {updateState.status === 'error' ? <CircleAlert size={19} /> : updateState.status === 'up-to-date' || updateState.status === 'downloaded' ? <CircleCheck size={19} /> : <RefreshCw size={18} className={updateState.status === 'checking' || updateState.status === 'downloading' ? 'spinning' : ''} />}
+                </span>
+                <div className="update-overview-copy">
+                  <div className="update-title-row"><strong>Software updates</strong><span className="update-status-label">{updateStatusLabel}</span></div>
+                  <p>{updateState.message}</p>
+                </div>
+              </section>
+
+              <div className="version-row"><span>Installed version</span><strong>v{updateState.currentVersion || '...'}</strong></div>
+
+              {updateState.availableVersion && updateState.status !== 'up-to-date' && (
+                <div className="version-row"><span>Available version</span><strong>v{updateState.availableVersion}</strong></div>
+              )}
+
+              {updateState.status === 'downloading' && (
+                <div className="update-progress-wrap">
+                  <div className="update-progress-heading"><span>Download progress</span><strong>{updateState.progress}%</strong></div>
+                  <div className="update-progress" role="progressbar" aria-label="Update download progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow={updateState.progress}><span style={{ width: `${updateState.progress}%` }} /></div>
+                </div>
+              )}
+
+              <div className="settings-divider" />
+              <div className="settings-section-heading"><div><strong>Automatic updates</strong><p>Keep MapFusion current with less effort.</p></div></div>
+              <label className="update-preference">
+                <span className="update-preference-copy"><strong>Check and download automatically</strong><small>Checks when the app starts and downloads available updates. Restart the app to finish installation.</small></span>
+                <input type="checkbox" role="switch" checked={updateState.automaticUpdatesEnabled} disabled={preferencePending} onChange={changeAutomaticUpdates} aria-label="Check and download updates automatically" />
+                <span className="switch-track" aria-hidden="true"><span /></span>
+              </label>
+              {!updateState.automaticUpdatesEnabled && <p className="manual-update-note">Automatic checks are off. You can still check and install updates here.</p>}
+            </div>
+            <footer className="settings-footer">
+              <button className="outline-button" onClick={checkForUpdates} disabled={updateActionPending || updateState.status === 'checking'}><RefreshCw size={14} className={updateState.status === 'checking' ? 'spinning' : ''} />Check for updates</button>
+              {updateState.status === 'available' && !updateState.automaticUpdatesEnabled && <button className="add-data-button" onClick={downloadUpdate} disabled={updateActionPending}><Download size={14} />Download update</button>}
+              {updateState.status === 'downloaded' && <button className="add-data-button" onClick={installUpdate} disabled={updateActionPending}><RefreshCw size={14} />Restart to install</button>}
+            </footer>
+          </section>
+        </div>
+      )}
       {toast && <div className="toast" role="status"><Check size={15} />{toast}<button onClick={() => setToast('')} aria-label="Dismiss notification"><X size={15} /></button></div>}
       {showRunOutput && <div className="modal-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget && !isRunning) setShowRunOutput(false); }}><section className="run-dialog" role="dialog" aria-modal="true" aria-labelledby="run-title"><header><div><span className="eyebrow">LOCAL PROCESSING</span><h2 id="run-title">Merged map pipeline</h2></div><button className="icon-button" onClick={() => !isRunning && setShowRunOutput(false)} aria-label="Close pipeline output" disabled={isRunning}><X size={18} /></button></header><div className={`run-status ${isRunning ? 'busy' : 'done'}`}><span className={isRunning ? 'pulse-dot' : 'online-dot'} />{isRunning ? 'Processing datasets' : 'Process finished'}</div><pre>{runOutput}</pre><footer><button className="outline-button" onClick={() => setShowRunOutput(false)} disabled={isRunning}>Close</button></footer></section></div>}
     </div>
