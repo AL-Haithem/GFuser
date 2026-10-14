@@ -1,6 +1,6 @@
 {
   "name": "GFuser",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "private": true,
   "description": "A desktop app shell for project management and software updates.",
   "main": "main.js",

@@ -8,11 +8,11 @@ app.setPath('userData', path.join(app.getPath('documents'), 'GFuser'));
 
 const { autoUpdater } = require('electron-updater');
 
-let appSettings = { automaticUpdatesEnabled: false, projects: [], theme: 'light' };
+let appSettings = { automaticUpdatesEnabled: true, projects: [], theme: 'light' };
 let updateState = {
   status: 'idle',
   currentVersion: app.getVersion(),
-  automaticUpdatesEnabled: false,
+  automaticUpdatesEnabled: true,
   progress: 0,
   message: 'Updates have not been checked yet.',
 };
