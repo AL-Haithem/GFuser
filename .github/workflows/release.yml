@@ -6,7 +6,7 @@ on:
       - 'v*'
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   release:
@@ -30,6 +30,34 @@ jobs:
 
       - run: npm ci
       - run: npm run check
-      - run: npm run build:installer -- --publish always
+      - name: Build and publish to releases repository
+        shell: pwsh
+        run: |
+          if ([string]::IsNullOrWhiteSpace($env:RELEASES_REPO)) {
+            throw 'RELEASES_REPO must be set to owner/repository.'
+          }
+          if ($env:RELEASES_REPO -notmatch '^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$') {
+            throw 'RELEASES_REPO must use the owner/repository format.'
+          }
+          if ([string]::IsNullOrWhiteSpace($env:RELEASES_TOKEN)) {
+            throw 'RELEASES_TOKEN must be configured as a repository secret.'
+          }
+
+          $owner, $repository = $env:RELEASES_REPO.Split('/', 2)
+          $package = Get-Content package.json -Raw | ConvertFrom-Json
+          $config = $package.build
+          $config | Add-Member -NotePropertyName publish -NotePropertyValue @{
+            provider = 'github'
+            owner = $owner
+            repo = $repository
+            releaseType = 'release'
+          } -Force
+
+          $configPath = Join-Path $env:RUNNER_TEMP 'release-builder-config.json'
+          $config | ConvertTo-Json -Depth 100 | Set-Content -Path $configPath -Encoding utf8NoBOM
+          $env:GH_TOKEN = $env:RELEASES_TOKEN
+          npm run build:installer -- --publish always --config $configPath
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASES_REPO: ${{ secrets.RELEASES_REPO }}
+          RELEASES_TOKEN: ${{ secrets.RELEASES_TOKEN }}
