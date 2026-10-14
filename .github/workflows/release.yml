@@ -1,9 +1,9 @@
-name: Publish Windows release
+name: Build and Publish Windows Release
 
 on:
   push:
     tags:
-      - 'v*'
+      - "v*.*.*"
 
 permissions:
   contents: read
@@ -11,13 +11,19 @@ permissions:
 jobs:
   release:
     runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+    steps:
+      - name: Checkout private repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Verify tag matches package version
         shell: pwsh
@@ -28,20 +34,21 @@ jobs:
             throw "Tag $env:GITHUB_REF_NAME does not match package version $packageVersion"
           }
 
-      - run: npm ci
-      - run: npm run check
-      - name: Build and publish to releases repository
+      - name: Check application
+        run: npm run check
+
+      - name: Build and publish release assets
         shell: pwsh
+        env:
+          RELEASES_REPO: ${{ secrets.RELEASES_REPO }}
+          RELEASES_TOKEN: ${{ secrets.RELEASES_TOKEN }}
         run: |
-          if ([string]::IsNullOrWhiteSpace($env:RELEASES_REPO)) {
-            throw 'RELEASES_REPO must be set to owner/repository.'
-          }
-          if ($env:RELEASES_REPO -notmatch '^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$') {
-            throw 'RELEASES_REPO must use the owner/repository format.'
+          if ([string]::IsNullOrWhiteSpace($env:RELEASES_REPO) -or $env:RELEASES_REPO -notmatch '^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$') {
+            throw 'RELEASES_REPO must be configured as owner/repository.'
           }
           if ([string]::IsNullOrWhiteSpace($env:RELEASES_TOKEN)) {
             throw 'RELEASES_TOKEN must be configured as a repository secret.'
-          }
+          fi
 
           $owner, $repository = $env:RELEASES_REPO.Split('/', 2)
           $package = Get-Content package.json -Raw | ConvertFrom-Json
@@ -58,6 +65,3 @@ jobs:
           $env:GH_TOKEN = $env:RELEASES_TOKEN
           npm run build:installer -- --publish always --config $configPath
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-        env:
-          RELEASES_REPO: ${{ secrets.RELEASES_REPO }}
-          RELEASES_TOKEN: ${{ secrets.RELEASES_TOKEN }}

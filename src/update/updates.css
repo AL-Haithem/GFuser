@@ -13,8 +13,8 @@
 .settings-row strong { color: var(--text); }
 .progress-wrap { display: flex; flex-direction: column; gap: 8px; }
 .progress-head { display: flex; justify-content: space-between; color: var(--muted); font-size: 10px; }
-.progress-bar { --progress: 0%; height: 7px; overflow: hidden; border-radius: 99px; background: var(--surface-soft); }
-.progress-bar-fill { display: block; width: var(--progress); height: 100%; border-radius: inherit; background: var(--accent); transition: width 180ms ease; }
+.progress-bar { height: 7px; overflow: hidden; border-radius: 99px; background: var(--surface-soft); }
+.progress-bar span { display: block; width: var(--progress, 0%); height: 100%; border-radius: inherit; background: var(--accent); transition: width 180ms ease; }
 .toggle-row { position: relative; display: flex; align-items: center; gap: 14px; padding: 13px 0; border-top: 1px solid var(--line); cursor: pointer; }
 .toggle-row > span:first-child { display: flex; flex: 1; flex-direction: column; gap: 4px; }
 .toggle-row strong { font-size: 11px; }

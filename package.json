@@ -1,21 +1,29 @@
 {
-  "name": "mapfusiondesktop",
-  "version": "1.0.5",
+  "name": "GFuser",
+  "version": "1.0.6",
   "private": true,
   "description": "A desktop app shell for project management and software updates.",
   "main": "main.js",
   "scripts": {
     "start": "npm run build:ui && electron .",
-    "dev": "concurrently -k --success command-1 \"vite --host 127.0.0.1\" \"wait-on http://127.0.0.1:5173 && cross-env VITE_DEV_SERVER_URL=http://127.0.0.1:5173 electron .\"",
+    "dev": "concurrently -k --success command-1 \"vite --host 127.0.0.1 --port 4173 --strictPort\" \"wait-on http://127.0.0.1:4173 && cross-env VITE_DEV_SERVER_URL=http://127.0.0.1:4173 electron .\"",
     "build:ui": "vite build",
     "check": "node --check main.js && node --check preload.js && vite build",
     "dist": "npm run build:ui && electron-builder --win --dir",
     "build": "npm run build:ui && electron-builder --win --dir",
     "build:installer": "npm run build:ui && electron-builder --win nsis"
   },
+
+  "repository": "https://github.com/AL-Haithem/GFuser",
+
+  "publish": {
+    "provider": "github",
+    "releaseType": "release"
+  },
+
   "build": {
-    "appId": "com.mapfusiondesktop.app",
-    "productName": "MapFusionDesktop",
+    "appId": "site.alhaihem.gfuser",
+    "productName": "GFuser",
     "directories": {
       "output": "release"
     },
@@ -29,14 +37,9 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true
-    },
-    "publish": {
-      "provider": "github",
-      "owner": "AL-Haithem",
-      "repo": "GEOProcessing",
-      "releaseType": "release"
     }
   },
+
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
     "concurrently": "^9.1.0",

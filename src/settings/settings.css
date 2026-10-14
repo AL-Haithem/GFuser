@@ -1,0 +1,8 @@
+.settings-card { width: min(520px, calc(100vw - 32px)); max-height: min(760px, calc(100vh - 40px)); overflow-y: auto; }
+.settings-card .modal-header { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 5px; }
+.settings-card .modal-header h2 { font-size: 20px; }
+.settings-section { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px 0; }
+.settings-section h3 { margin: 0; font-size: 13px; font-weight: 700; }
+.settings-divider { height: 1px; background: var(--line); }
+.settings-section .update-settings-feature { width: 100%; }
+@media (max-width: 520px) { .settings-card { max-height: calc(100vh - 24px); padding: 16px; } }

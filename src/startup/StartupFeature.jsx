@@ -17,23 +17,15 @@ export default function StartupFeature({ steps, version, theme }) {
       <section className="startup-content">
         <header className="startup-brand">
           <span className="startup-mark"><Database size={21} /></span>
-          <span>MapFusion</span>
+          <span>GFuser</span>
         </header>
         <div className="startup-heading">
           <span className="eyebrow">DESKTOP APP</span>
           <h1>Preparing your workspace</h1>
           <p>Initializing app data and services.</p>
         </div>
-        <div
-          className="startup-progress-track"
-          role="progressbar"
-          aria-label="Startup progress"
-          aria-valuenow={progress}
-          aria-valuemin="0"
-          aria-valuemax="100"
-          style={{ '--progress': `${progress}%` }}
-        >
-          <span className="startup-progress-fill" />
+        <div className="startup-progress-track" role="progressbar" aria-label="Startup progress" aria-valuenow={progress} aria-valuemin="0" aria-valuemax="100">
+          <span style={{ '--progress': `${progress}%` }} />
         </div>
         <ol className="startup-steps">
           {steps.map((step) => (
@@ -44,7 +36,7 @@ export default function StartupFeature({ steps, version, theme }) {
             </li>
           ))}
         </ol>
-        <footer className="startup-footer">{version ? `Version ${version}` : 'Starting MapFusion'}</footer>
+        <footer className="startup-footer">{version ? `Version ${version}` : 'Starting GFuser'}</footer>
       </section>
     </main>
   );

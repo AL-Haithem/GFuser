@@ -1,0 +1,4 @@
+.theme-switcher { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface-soft); }
+.theme-switcher button { display: inline-flex; min-width: 78px; height: 31px; align-items: center; justify-content: center; gap: 6px; padding: 0 9px; border: 1px solid transparent; border-radius: 6px; background: transparent; color: var(--muted); cursor: pointer; font-size: 11px; font-weight: 600; }
+.theme-switcher button.active { border-color: var(--line); background: var(--surface); color: var(--text); box-shadow: 0 1px 3px rgba(20, 31, 26, .08); }
+.appearance-feature > svg { color: var(--accent-strong); }

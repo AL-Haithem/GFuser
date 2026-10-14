@@ -5,8 +5,8 @@
 .startup-heading .eyebrow { color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: .14em; }
 .startup-heading h1 { margin-top: 9px; font-size: 25px; font-weight: 600; }
 .startup-heading p { margin-top: 7px; color: var(--muted); font-size: 12px; }
-.startup-progress-track { --progress: 0%; height: 4px; overflow: hidden; margin-top: 29px; border-radius: 5px; background: var(--line); }
-.startup-progress-fill { display: block; width: var(--progress); height: 100%; border-radius: inherit; background: var(--accent); transition: width 220ms ease; }
+.startup-progress-track { height: 4px; overflow: hidden; margin-top: 29px; border-radius: 5px; background: var(--line); }
+.startup-progress-track span { display: block; width: var(--progress, 0%); height: 100%; border-radius: inherit; background: var(--accent); transition: width 220ms ease; }
 .startup-steps { display: flex; flex-direction: column; gap: 0; padding: 0; margin: 12px 0 0; list-style: none; }
 .startup-step { display: flex; min-height: 48px; align-items: center; gap: 11px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 11px; }
 .startup-step-icon { display: grid; width: 22px; height: 22px; flex: none; place-items: center; color: #98a39b; }
