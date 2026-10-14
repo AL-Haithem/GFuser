@@ -1,0 +1,54 @@
+{
+ "build": "h60971b7_0",
+ "build_number": 0,
+ "channel": "https://conda.anaconda.org/conda-forge/win-64",
+ "constrains": [],
+ "depends": [
+  "lz4-c",
+  "bzip2",
+  "libzlib",
+  "vc >=14.3,<15",
+  "vc14_runtime >=14.44.35208",
+  "ucrt >=10.0.20348.0",
+  "libexpat >=2.8.1,<3.0a0",
+  "lz4-c >=1.10.0,<1.11.0a0",
+  "bzip2 >=1.0.8,<2.0a0",
+  "libboost >=1.90.0,<1.91.0a0",
+  "libzlib >=1.3.2,<2.0a0"
+ ],
+ "extracted_package_dir": "",
+ "files": [
+  "Library/bin/osmium.exe"
+ ],
+ "fn": "osmium-tool-1.19.1-h60971b7_0.conda",
+ "license": "GPL-3.0-only",
+ "link": {
+  "source": "",
+  "type": 1
+ },
+ "md5": "c5ea6678eb9b3a4c7de28dd592e68662",
+ "name": "osmium-tool",
+ "package_tarball_full_path": "",
+ "paths_data": {
+  "paths": [
+   {
+    "_path": "Library/bin/osmium.exe",
+    "path_type": "hardlink",
+    "sha256": "455925087048db47c32ef1c9f20533f343dfc60f2aa7db8a0bfeca4851eb42e3",
+    "sha256_in_prefix": "455925087048db47c32ef1c9f20533f343dfc60f2aa7db8a0bfeca4851eb42e3",
+    "size_in_bytes": 1387008
+   }
+  ],
+  "paths_version": 1
+ },
+ "requested_spec": "osmium-tool",
+ "requested_specs": [
+  "osmium-tool"
+ ],
+ "sha256": "cbac55c919fdc8189fc25ea2c7dead293f587200d04e3cb4b7b5b8ecd0f835b0",
+ "size": 557520,
+ "subdir": "win-64",
+ "timestamp": 1784007948392,
+ "url": "https://conda.anaconda.org/conda-forge/win-64/osmium-tool-1.19.1-h60971b7_0.conda",
+ "version": "1.19.1"
+}

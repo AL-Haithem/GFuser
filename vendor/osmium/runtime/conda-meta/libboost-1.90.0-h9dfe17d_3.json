@@ -1,0 +1,731 @@
+{
+ "_requested_specs": [],
+ "build": "h9dfe17d_3",
+ "build_number": 3,
+ "channel": "https://conda.anaconda.org/conda-forge/win-64",
+ "constrains": [
+  "__win >=10",
+  "boost-cpp <0.0a0"
+ ],
+ "depends": [
+  "bzip2 >=1.0.8,<2.0a0",
+  "libiconv >=1.18,<2.0a0",
+  "liblzma >=5.8.3,<6.0a0",
+  "libzlib >=1.3.2,<2.0a0",
+  "ucrt >=10.0.20348.0",
+  "vc >=14.3,<15",
+  "vc14_runtime >=14.44.35208",
+  "zstd >=1.5.7,<1.6.0a0"
+ ],
+ "extracted_package_dir": "",
+ "files": [
+  "Library/bin/boost_atomic.dll",
+  "Library/bin/boost_charconv.dll",
+  "Library/bin/boost_chrono.dll",
+  "Library/bin/boost_cobalt.dll",
+  "Library/bin/boost_cobalt_io.dll",
+  "Library/bin/boost_container.dll",
+  "Library/bin/boost_context.dll",
+  "Library/bin/boost_contract.dll",
+  "Library/bin/boost_coroutine.dll",
+  "Library/bin/boost_date_time.dll",
+  "Library/bin/boost_fiber.dll",
+  "Library/bin/boost_filesystem.dll",
+  "Library/bin/boost_graph.dll",
+  "Library/bin/boost_iostreams.dll",
+  "Library/bin/boost_json.dll",
+  "Library/bin/boost_locale.dll",
+  "Library/bin/boost_log.dll",
+  "Library/bin/boost_log_setup.dll",
+  "Library/bin/boost_math_c99.dll",
+  "Library/bin/boost_math_c99f.dll",
+  "Library/bin/boost_math_c99l.dll",
+  "Library/bin/boost_math_tr1.dll",
+  "Library/bin/boost_math_tr1f.dll",
+  "Library/bin/boost_math_tr1l.dll",
+  "Library/bin/boost_nowide.dll",
+  "Library/bin/boost_prg_exec_monitor.dll",
+  "Library/bin/boost_process.dll",
+  "Library/bin/boost_program_options.dll",
+  "Library/bin/boost_random.dll",
+  "Library/bin/boost_regex.dll",
+  "Library/bin/boost_serialization.dll",
+  "Library/bin/boost_stacktrace_from_exception.dll",
+  "Library/bin/boost_stacktrace_noop.dll",
+  "Library/bin/boost_stacktrace_windbg.dll",
+  "Library/bin/boost_stacktrace_windbg_cached.dll",
+  "Library/bin/boost_thread.dll",
+  "Library/bin/boost_timer.dll",
+  "Library/bin/boost_type_erasure.dll",
+  "Library/bin/boost_unit_test_framework.dll",
+  "Library/bin/boost_url.dll",
+  "Library/bin/boost_wave.dll",
+  "Library/bin/boost_wserialization.dll",
+  "Library/lib/boost_atomic.lib",
+  "Library/lib/boost_charconv.lib",
+  "Library/lib/boost_chrono.lib",
+  "Library/lib/boost_cobalt.lib",
+  "Library/lib/boost_cobalt_io.lib",
+  "Library/lib/boost_container.lib",
+  "Library/lib/boost_context.lib",
+  "Library/lib/boost_contract.lib",
+  "Library/lib/boost_coroutine.lib",
+  "Library/lib/boost_date_time.lib",
+  "Library/lib/boost_fiber.lib",
+  "Library/lib/boost_filesystem.lib",
+  "Library/lib/boost_graph.lib",
+  "Library/lib/boost_iostreams.lib",
+  "Library/lib/boost_json.lib",
+  "Library/lib/boost_locale.lib",
+  "Library/lib/boost_log.lib",
+  "Library/lib/boost_log_setup.lib",
+  "Library/lib/boost_math_c99.lib",
+  "Library/lib/boost_math_c99f.lib",
+  "Library/lib/boost_math_c99l.lib",
+  "Library/lib/boost_math_tr1.lib",
+  "Library/lib/boost_math_tr1f.lib",
+  "Library/lib/boost_math_tr1l.lib",
+  "Library/lib/boost_nowide.lib",
+  "Library/lib/boost_prg_exec_monitor.lib",
+  "Library/lib/boost_process.lib",
+  "Library/lib/boost_program_options.lib",
+  "Library/lib/boost_random.lib",
+  "Library/lib/boost_regex.lib",
+  "Library/lib/boost_serialization.lib",
+  "Library/lib/boost_stacktrace_from_exception.lib",
+  "Library/lib/boost_stacktrace_noop.lib",
+  "Library/lib/boost_stacktrace_windbg.lib",
+  "Library/lib/boost_stacktrace_windbg_cached.lib",
+  "Library/lib/boost_thread.lib",
+  "Library/lib/boost_timer.lib",
+  "Library/lib/boost_type_erasure.lib",
+  "Library/lib/boost_unit_test_framework.lib",
+  "Library/lib/boost_url.lib",
+  "Library/lib/boost_wave.lib",
+  "Library/lib/boost_wserialization.lib",
+  "Library/lib/libboost_exception.lib",
+  "Library/lib/libboost_test_exec_monitor.lib"
+ ],
+ "fn": "libboost-1.90.0-h9dfe17d_3.conda",
+ "license": "BSL-1.0",
+ "link": {
+  "source": "",
+  "type": 1
+ },
+ "md5": "15620ea8e1fa6d5eb275ee8665f88b32",
+ "name": "libboost",
+ "package_tarball_full_path": "",
+ "paths_data": {
+  "paths": [
+   {
+    "_path": "Library/bin/boost_atomic.dll",
+    "path_type": "hardlink",
+    "sha256": "dd9630ac09467294652a7c55b602c3e0f67ccc430ee37b8e6800589b011f52d8",
+    "sha256_in_prefix": "dd9630ac09467294652a7c55b602c3e0f67ccc430ee37b8e6800589b011f52d8",
+    "size_in_bytes": 17920
+   },
+   {
+    "_path": "Library/bin/boost_charconv.dll",
+    "path_type": "hardlink",
+    "sha256": "fe1cabfc05074a9cf8ba110a47c4261e4596169f7e9da270db9d00103f4a7175",
+    "sha256_in_prefix": "fe1cabfc05074a9cf8ba110a47c4261e4596169f7e9da270db9d00103f4a7175",
+    "size_in_bytes": 110080
+   },
+   {
+    "_path": "Library/bin/boost_chrono.dll",
+    "path_type": "hardlink",
+    "sha256": "3690999e633dbf744d8d44907d0fd8038316ec67601fc75c2aa6d724e71dd07b",
+    "sha256_in_prefix": "3690999e633dbf744d8d44907d0fd8038316ec67601fc75c2aa6d724e71dd07b",
+    "size_in_bytes": 34816
+   },
+   {
+    "_path": "Library/bin/boost_cobalt.dll",
+    "path_type": "hardlink",
+    "sha256": "6fcc18ce3d5a08c3b5fce65aa937977053a705dde2f51564332d7f011c71390e",
+    "sha256_in_prefix": "6fcc18ce3d5a08c3b5fce65aa937977053a705dde2f51564332d7f011c71390e",
+    "size_in_bytes": 118784
+   },
+   {
+    "_path": "Library/bin/boost_cobalt_io.dll",
+    "path_type": "hardlink",
+    "sha256": "293a98838b549a8199d8e53218f9f490de5238d5e4eb72d668e813894ead80f1",
+    "sha256_in_prefix": "293a98838b549a8199d8e53218f9f490de5238d5e4eb72d668e813894ead80f1",
+    "size_in_bytes": 375296
+   },
+   {
+    "_path": "Library/bin/boost_container.dll",
+    "path_type": "hardlink",
+    "sha256": "39b0b9d4d9ce669e74ece03ee38450b48090e96f710c672ead091d18b3af9f0e",
+    "sha256_in_prefix": "39b0b9d4d9ce669e74ece03ee38450b48090e96f710c672ead091d18b3af9f0e",
+    "size_in_bytes": 54784
+   },
+   {
+    "_path": "Library/bin/boost_context.dll",
+    "path_type": "hardlink",
+    "sha256": "0ced15a7e6a648334ffa211478b21ca825de41507496559ac7ee51759a8357df",
+    "sha256_in_prefix": "0ced15a7e6a648334ffa211478b21ca825de41507496559ac7ee51759a8357df",
+    "size_in_bytes": 12800
+   },
+   {
+    "_path": "Library/bin/boost_contract.dll",
+    "path_type": "hardlink",
+    "sha256": "6c04a568e2af3c331e37d4fb8d73a867795f130a56e682bf7bf1e060bc8eb31a",
+    "sha256_in_prefix": "6c04a568e2af3c331e37d4fb8d73a867795f130a56e682bf7bf1e060bc8eb31a",
+    "size_in_bytes": 78336
+   },
+   {
+    "_path": "Library/bin/boost_coroutine.dll",
+    "path_type": "hardlink",
+    "sha256": "0c3f52a6a4b80183186165f509cfb3c6d3c3a8e6a08678cb0e8f90dc99f0aaaf",
+    "sha256_in_prefix": "0c3f52a6a4b80183186165f509cfb3c6d3c3a8e6a08678cb0e8f90dc99f0aaaf",
+    "size_in_bytes": 18432
+   },
+   {
+    "_path": "Library/bin/boost_date_time.dll",
+    "path_type": "hardlink",
+    "sha256": "52cdfb9968fb7ca19f422b74e75e47c304bf1ac27932fa85482322e8dcafc490",
+    "sha256_in_prefix": "52cdfb9968fb7ca19f422b74e75e47c304bf1ac27932fa85482322e8dcafc490",
+    "size_in_bytes": 9728
+   },
+   {
+    "_path": "Library/bin/boost_fiber.dll",
+    "path_type": "hardlink",
+    "sha256": "8c291817374d8985fac717444d05273bcca2d736d7d4225ee5400ac99b3b4b4d",
+    "sha256_in_prefix": "8c291817374d8985fac717444d05273bcca2d736d7d4225ee5400ac99b3b4b4d",
+    "size_in_bytes": 77312
+   },
+   {
+    "_path": "Library/bin/boost_filesystem.dll",
+    "path_type": "hardlink",
+    "sha256": "c6f23546a502f9647e74f9804182c86677666f0bd5c7e3470d801fcf2215e80c",
+    "sha256_in_prefix": "c6f23546a502f9647e74f9804182c86677666f0bd5c7e3470d801fcf2215e80c",
+    "size_in_bytes": 163840
+   },
+   {
+    "_path": "Library/bin/boost_graph.dll",
+    "path_type": "hardlink",
+    "sha256": "0d484041e5673f1326e8f478c6d7b5639d437bdee533cdffcdd0f3d13d3be75d",
+    "sha256_in_prefix": "0d484041e5673f1326e8f478c6d7b5639d437bdee533cdffcdd0f3d13d3be75d",
+    "size_in_bytes": 318976
+   },
+   {
+    "_path": "Library/bin/boost_iostreams.dll",
+    "path_type": "hardlink",
+    "sha256": "6256cd016ddb9e3efdc6e5c09014e64684a94fccf8448ea89bf8bc34edb5f4d2",
+    "sha256_in_prefix": "6256cd016ddb9e3efdc6e5c09014e64684a94fccf8448ea89bf8bc34edb5f4d2",
+    "size_in_bytes": 73216
+   },
+   {
+    "_path": "Library/bin/boost_json.dll",
+    "path_type": "hardlink",
+    "sha256": "793c4d251fbd25702f21e9fb08f5912a15e5cd1fb9b52593ec4b7af76d1151a5",
+    "sha256_in_prefix": "793c4d251fbd25702f21e9fb08f5912a15e5cd1fb9b52593ec4b7af76d1151a5",
+    "size_in_bytes": 313344
+   },
+   {
+    "_path": "Library/bin/boost_locale.dll",
+    "path_type": "hardlink",
+    "sha256": "762cfa866f7b9fb1d88fc634e62d17f263d25b74ba767fed6fae584c88cf1ae0",
+    "sha256_in_prefix": "762cfa866f7b9fb1d88fc634e62d17f263d25b74ba767fed6fae584c88cf1ae0",
+    "size_in_bytes": 486400
+   },
+   {
+    "_path": "Library/bin/boost_log.dll",
+    "path_type": "hardlink",
+    "sha256": "8236a47e7283291671f3819cfb365dfc9c3aee5afecc543023702b0a825e46d6",
+    "sha256_in_prefix": "8236a47e7283291671f3819cfb365dfc9c3aee5afecc543023702b0a825e46d6",
+    "size_in_bytes": 614912
+   },
+   {
+    "_path": "Library/bin/boost_log_setup.dll",
+    "path_type": "hardlink",
+    "sha256": "d7a8d8f2efc4d37deec150ed6160960385eb881624d59e6b2059d92e837cbce0",
+    "sha256_in_prefix": "d7a8d8f2efc4d37deec150ed6160960385eb881624d59e6b2059d92e837cbce0",
+    "size_in_bytes": 695808
+   },
+   {
+    "_path": "Library/bin/boost_math_c99.dll",
+    "path_type": "hardlink",
+    "sha256": "c901f5030059a1cfd66566798b68c23e49a02ec3dde5a6cdfbf71e9eeb0da80d",
+    "sha256_in_prefix": "c901f5030059a1cfd66566798b68c23e49a02ec3dde5a6cdfbf71e9eeb0da80d",
+    "size_in_bytes": 31232
+   },
+   {
+    "_path": "Library/bin/boost_math_c99f.dll",
+    "path_type": "hardlink",
+    "sha256": "1bdb001e7e5b22a45ad5dda1bdb61a40564e479fefc18130453437f2af01e30d",
+    "sha256_in_prefix": "1bdb001e7e5b22a45ad5dda1bdb61a40564e479fefc18130453437f2af01e30d",
+    "size_in_bytes": 31744
+   },
+   {
+    "_path": "Library/bin/boost_math_c99l.dll",
+    "path_type": "hardlink",
+    "sha256": "029d8f2d9f86c5831f7784cd4c162bab9f52100dcd6c82f3c0955f18c702c135",
+    "sha256_in_prefix": "029d8f2d9f86c5831f7784cd4c162bab9f52100dcd6c82f3c0955f18c702c135",
+    "size_in_bytes": 29696
+   },
+   {
+    "_path": "Library/bin/boost_math_tr1.dll",
+    "path_type": "hardlink",
+    "sha256": "ea35b59df7e1dfc62e227f328363f9ef1fe22f7f612accf514e03485418a0686",
+    "sha256_in_prefix": "ea35b59df7e1dfc62e227f328363f9ef1fe22f7f612accf514e03485418a0686",
+    "size_in_bytes": 144896
+   },
+   {
+    "_path": "Library/bin/boost_math_tr1f.dll",
+    "path_type": "hardlink",
+    "sha256": "380beb2ca0bcef1bc6fe584e7ed4ff0cec4d62b2ae7d577dd8c172437725930b",
+    "sha256_in_prefix": "380beb2ca0bcef1bc6fe584e7ed4ff0cec4d62b2ae7d577dd8c172437725930b",
+    "size_in_bytes": 168448
+   },
+   {
+    "_path": "Library/bin/boost_math_tr1l.dll",
+    "path_type": "hardlink",
+    "sha256": "73c9cbdb75fb6d460e76b1ee98ba053cd59e087d0257fbf8e86f9bc7d6bae965",
+    "sha256_in_prefix": "73c9cbdb75fb6d460e76b1ee98ba053cd59e087d0257fbf8e86f9bc7d6bae965",
+    "size_in_bytes": 144896
+   },
+   {
+    "_path": "Library/bin/boost_nowide.dll",
+    "path_type": "hardlink",
+    "sha256": "e94085131d3cfe6b04624990d60e687aa12fcf02ed7f2d834082ff9310ea6863",
+    "sha256_in_prefix": "e94085131d3cfe6b04624990d60e687aa12fcf02ed7f2d834082ff9310ea6863",
+    "size_in_bytes": 44032
+   },
+   {
+    "_path": "Library/bin/boost_prg_exec_monitor.dll",
+    "path_type": "hardlink",
+    "sha256": "ea3f071e0bddf3bcf2fde85952b75d0045cdf338aca67881239d39997cd57901",
+    "sha256_in_prefix": "ea3f071e0bddf3bcf2fde85952b75d0045cdf338aca67881239d39997cd57901",
+    "size_in_bytes": 59392
+   },
+   {
+    "_path": "Library/bin/boost_process.dll",
+    "path_type": "hardlink",
+    "sha256": "4d6d9b30119104eba1e1def5edc0aa4effbf4c55233bf9618a3e84d0e37ecc58",
+    "sha256_in_prefix": "4d6d9b30119104eba1e1def5edc0aa4effbf4c55233bf9618a3e84d0e37ecc58",
+    "size_in_bytes": 76800
+   },
+   {
+    "_path": "Library/bin/boost_program_options.dll",
+    "path_type": "hardlink",
+    "sha256": "cc75510a2ca5231e109ae0e79fd7da5d6a99628383d6fca6e47da1791ec6ec5b",
+    "sha256_in_prefix": "cc75510a2ca5231e109ae0e79fd7da5d6a99628383d6fca6e47da1791ec6ec5b",
+    "size_in_bytes": 366080
+   },
+   {
+    "_path": "Library/bin/boost_random.dll",
+    "path_type": "hardlink",
+    "sha256": "95b59c1c3ced1e14505a13876ea1e2da0137ed7e41515bf4d2933c9624990e37",
+    "sha256_in_prefix": "95b59c1c3ced1e14505a13876ea1e2da0137ed7e41515bf4d2933c9624990e37",
+    "size_in_bytes": 29696
+   },
+   {
+    "_path": "Library/bin/boost_regex.dll",
+    "path_type": "hardlink",
+    "sha256": "8e1cbfad9104cc4b8c66a4803d8a8f1d4f1f8e3a7d6658f0313fc44e4e15d7e0",
+    "sha256_in_prefix": "8e1cbfad9104cc4b8c66a4803d8a8f1d4f1f8e3a7d6658f0313fc44e4e15d7e0",
+    "size_in_bytes": 244224
+   },
+   {
+    "_path": "Library/bin/boost_serialization.dll",
+    "path_type": "hardlink",
+    "sha256": "42218e03f35d927b16300bf09e4e30dd26abf17500b5de8c08ffaa27ee31565e",
+    "sha256_in_prefix": "42218e03f35d927b16300bf09e4e30dd26abf17500b5de8c08ffaa27ee31565e",
+    "size_in_bytes": 218112
+   },
+   {
+    "_path": "Library/bin/boost_stacktrace_from_exception.dll",
+    "path_type": "hardlink",
+    "sha256": "4798f9a477d67812a57feda3e6742119bf0f86db1969e3bea2df112346e7056c",
+    "sha256_in_prefix": "4798f9a477d67812a57feda3e6742119bf0f86db1969e3bea2df112346e7056c",
+    "size_in_bytes": 13824
+   },
+   {
+    "_path": "Library/bin/boost_stacktrace_noop.dll",
+    "path_type": "hardlink",
+    "sha256": "3882ff8895907c7d15221cd5a7c79bb7d0ebd03bf270f5e242e366da25886bd1",
+    "sha256_in_prefix": "3882ff8895907c7d15221cd5a7c79bb7d0ebd03bf270f5e242e366da25886bd1",
+    "size_in_bytes": 10752
+   },
+   {
+    "_path": "Library/bin/boost_stacktrace_windbg.dll",
+    "path_type": "hardlink",
+    "sha256": "356e34e2713d87fe876aed9537444ccd6246b46738423875d6fc77b08990eff7",
+    "sha256_in_prefix": "356e34e2713d87fe876aed9537444ccd6246b46738423875d6fc77b08990eff7",
+    "size_in_bytes": 36864
+   },
+   {
+    "_path": "Library/bin/boost_stacktrace_windbg_cached.dll",
+    "path_type": "hardlink",
+    "sha256": "4f18a9e4d2081c612566355c635212f60aad2d85cc22043cab0e87632bf60cc6",
+    "sha256_in_prefix": "4f18a9e4d2081c612566355c635212f60aad2d85cc22043cab0e87632bf60cc6",
+    "size_in_bytes": 37376
+   },
+   {
+    "_path": "Library/bin/boost_thread.dll",
+    "path_type": "hardlink",
+    "sha256": "888b6e5c8f7dbd5eca52439ffe6ba4cb9477f7e58d0dd28e25f316280ec42902",
+    "sha256_in_prefix": "888b6e5c8f7dbd5eca52439ffe6ba4cb9477f7e58d0dd28e25f316280ec42902",
+    "size_in_bytes": 78336
+   },
+   {
+    "_path": "Library/bin/boost_timer.dll",
+    "path_type": "hardlink",
+    "sha256": "0104194c7c4019e1b9fe5e1bca769ec6db1c1ec27a6f56565f821e6f95e94a86",
+    "sha256_in_prefix": "0104194c7c4019e1b9fe5e1bca769ec6db1c1ec27a6f56565f821e6f95e94a86",
+    "size_in_bytes": 32768
+   },
+   {
+    "_path": "Library/bin/boost_type_erasure.dll",
+    "path_type": "hardlink",
+    "sha256": "c0618e691967d46f80e4436eb628c493d4bd8ec34b8c10b06af57dcb7983258c",
+    "sha256_in_prefix": "c0618e691967d46f80e4436eb628c493d4bd8ec34b8c10b06af57dcb7983258c",
+    "size_in_bytes": 37376
+   },
+   {
+    "_path": "Library/bin/boost_unit_test_framework.dll",
+    "path_type": "hardlink",
+    "sha256": "9f7e8a4b19dd92a7b5dad0590de41bc6695ce1254e5012e14644dd84fc44d7d5",
+    "sha256_in_prefix": "9f7e8a4b19dd92a7b5dad0590de41bc6695ce1254e5012e14644dd84fc44d7d5",
+    "size_in_bytes": 524288
+   },
+   {
+    "_path": "Library/bin/boost_url.dll",
+    "path_type": "hardlink",
+    "sha256": "6f58b95680a940ef9512add0bd7eb4a8e6065ae66799e5364ad8c84e1fbc848e",
+    "sha256_in_prefix": "6f58b95680a940ef9512add0bd7eb4a8e6065ae66799e5364ad8c84e1fbc848e",
+    "size_in_bytes": 308224
+   },
+   {
+    "_path": "Library/bin/boost_wave.dll",
+    "path_type": "hardlink",
+    "sha256": "d468e3beb39b22d64d3384e435e6365647b30fcbdd3b884aa4861c437993572d",
+    "sha256_in_prefix": "d468e3beb39b22d64d3384e435e6365647b30fcbdd3b884aa4861c437993572d",
+    "size_in_bytes": 853504
+   },
+   {
+    "_path": "Library/bin/boost_wserialization.dll",
+    "path_type": "hardlink",
+    "sha256": "28221525dc0e70fe1f13a78801a915b75440dab14e181f236a08e5cc190f88a0",
+    "sha256_in_prefix": "28221525dc0e70fe1f13a78801a915b75440dab14e181f236a08e5cc190f88a0",
+    "size_in_bytes": 156672
+   },
+   {
+    "_path": "Library/lib/boost_atomic.lib",
+    "path_type": "hardlink",
+    "sha256": "1a674b7ba926e32876aae3ab6e08cdb037a2ebbbd0360b1566d85b497aaf12f3",
+    "sha256_in_prefix": "1a674b7ba926e32876aae3ab6e08cdb037a2ebbbd0360b1566d85b497aaf12f3",
+    "size_in_bytes": 6394
+   },
+   {
+    "_path": "Library/lib/boost_charconv.lib",
+    "path_type": "hardlink",
+    "sha256": "954cb747a85c777d6e82b06af8f3a32429a441299ba14e7c7519392bfa2a6d8d",
+    "sha256_in_prefix": "954cb747a85c777d6e82b06af8f3a32429a441299ba14e7c7519392bfa2a6d8d",
+    "size_in_bytes": 12674
+   },
+   {
+    "_path": "Library/lib/boost_chrono.lib",
+    "path_type": "hardlink",
+    "sha256": "e77ec67ad305ad9d1e151e71a3750afc2670cfcd9f5e4aca66ac4dfcfc55a80b",
+    "sha256_in_prefix": "e77ec67ad305ad9d1e151e71a3750afc2670cfcd9f5e4aca66ac4dfcfc55a80b",
+    "size_in_bytes": 23950
+   },
+   {
+    "_path": "Library/lib/boost_cobalt.lib",
+    "path_type": "hardlink",
+    "sha256": "3deaa3e988e39ab64d66ed437c658a3f9776dd75f149ae893c823367ffca8768",
+    "sha256_in_prefix": "3deaa3e988e39ab64d66ed437c658a3f9776dd75f149ae893c823367ffca8768",
+    "size_in_bytes": 16656
+   },
+   {
+    "_path": "Library/lib/boost_cobalt_io.lib",
+    "path_type": "hardlink",
+    "sha256": "31c57cf3e1bd709612983fa41c6d377b0fbb2c56006395dae0ac7b2e6e1e49ed",
+    "sha256_in_prefix": "31c57cf3e1bd709612983fa41c6d377b0fbb2c56006395dae0ac7b2e6e1e49ed",
+    "size_in_bytes": 206964
+   },
+   {
+    "_path": "Library/lib/boost_container.lib",
+    "path_type": "hardlink",
+    "sha256": "789c9996af5db037e3e383b49af94a0b43e8da5add21df635b7c0d4d46af71f9",
+    "sha256_in_prefix": "789c9996af5db037e3e383b49af94a0b43e8da5add21df635b7c0d4d46af71f9",
+    "size_in_bytes": 41076
+   },
+   {
+    "_path": "Library/lib/boost_context.lib",
+    "path_type": "hardlink",
+    "sha256": "94cc4389433b760b87307948aa5ce42b847e7ffdf82860447166b30e8ac35a6e",
+    "sha256_in_prefix": "94cc4389433b760b87307948aa5ce42b847e7ffdf82860447166b30e8ac35a6e",
+    "size_in_bytes": 7588
+   },
+   {
+    "_path": "Library/lib/boost_contract.lib",
+    "path_type": "hardlink",
+    "sha256": "8a262a8272d8e4e537cbd80fa832a584185e7bf4c3301ea040112b5733f406e0",
+    "sha256_in_prefix": "8a262a8272d8e4e537cbd80fa832a584185e7bf4c3301ea040112b5733f406e0",
+    "size_in_bytes": 45070
+   },
+   {
+    "_path": "Library/lib/boost_coroutine.lib",
+    "path_type": "hardlink",
+    "sha256": "d1737fed53e612f26789b2da4e7362cfde8bc00f41f1fdaf5db1461d2f72fa0f",
+    "sha256_in_prefix": "d1737fed53e612f26789b2da4e7362cfde8bc00f41f1fdaf5db1461d2f72fa0f",
+    "size_in_bytes": 10942
+   },
+   {
+    "_path": "Library/lib/boost_date_time.lib",
+    "path_type": "hardlink",
+    "sha256": "05e92f96e7f76174f3b7f0ffddd2846164c6eb1fca9670c9565053986847bea1",
+    "sha256_in_prefix": "05e92f96e7f76174f3b7f0ffddd2846164c6eb1fca9670c9565053986847bea1",
+    "size_in_bytes": 2122
+   },
+   {
+    "_path": "Library/lib/boost_fiber.lib",
+    "path_type": "hardlink",
+    "sha256": "1e826765184176e8e120d189ad4d6c634768cd06d6fa9a9811af2e138b3bf1c0",
+    "sha256_in_prefix": "1e826765184176e8e120d189ad4d6c634768cd06d6fa9a9811af2e138b3bf1c0",
+    "size_in_bytes": 83360
+   },
+   {
+    "_path": "Library/lib/boost_filesystem.lib",
+    "path_type": "hardlink",
+    "sha256": "48dda95654862d96ebc847603d405f5faf1ebbd2b0de666c801d050d2c501ab0",
+    "sha256_in_prefix": "48dda95654862d96ebc847603d405f5faf1ebbd2b0de666c801d050d2c501ab0",
+    "size_in_bytes": 69032
+   },
+   {
+    "_path": "Library/lib/boost_graph.lib",
+    "path_type": "hardlink",
+    "sha256": "4f649e0b73364d7cf91cd2f617e81b511828dda196db8566a3ef291b9f637319",
+    "sha256_in_prefix": "4f649e0b73364d7cf91cd2f617e81b511828dda196db8566a3ef291b9f637319",
+    "size_in_bytes": 2974
+   },
+   {
+    "_path": "Library/lib/boost_iostreams.lib",
+    "path_type": "hardlink",
+    "sha256": "05a7600e9ceee3d5de270e23c26fba856169882ffb700ce6ae3b115776b426f3",
+    "sha256_in_prefix": "05a7600e9ceee3d5de270e23c26fba856169882ffb700ce6ae3b115776b426f3",
+    "size_in_bytes": 88800
+   },
+   {
+    "_path": "Library/lib/boost_json.lib",
+    "path_type": "hardlink",
+    "sha256": "65f1b7a32ad2f3e9da24f296edd66add2c8839204bd5d8ff1f6cb8b41a23727d",
+    "sha256_in_prefix": "65f1b7a32ad2f3e9da24f296edd66add2c8839204bd5d8ff1f6cb8b41a23727d",
+    "size_in_bytes": 155974
+   },
+   {
+    "_path": "Library/lib/boost_locale.lib",
+    "path_type": "hardlink",
+    "sha256": "000b1e7c8ce417cedf12d9ddfd4a578b3fa6f1bd9f48fc477684821efbe325ac",
+    "sha256_in_prefix": "000b1e7c8ce417cedf12d9ddfd4a578b3fa6f1bd9f48fc477684821efbe325ac",
+    "size_in_bytes": 146340
+   },
+   {
+    "_path": "Library/lib/boost_log.lib",
+    "path_type": "hardlink",
+    "sha256": "a5f6264e07201b2dacb479973e2f2b5bfdca8bd5295fa66c1b40b6be0fbe2116",
+    "sha256_in_prefix": "a5f6264e07201b2dacb479973e2f2b5bfdca8bd5295fa66c1b40b6be0fbe2116",
+    "size_in_bytes": 288670
+   },
+   {
+    "_path": "Library/lib/boost_log_setup.lib",
+    "path_type": "hardlink",
+    "sha256": "59679893ae921b1fd2ab44198eff5baf487dcd953c43d9776f6b715bc5ab594a",
+    "sha256_in_prefix": "59679893ae921b1fd2ab44198eff5baf487dcd953c43d9776f6b715bc5ab594a",
+    "size_in_bytes": 12468
+   },
+   {
+    "_path": "Library/lib/boost_math_c99.lib",
+    "path_type": "hardlink",
+    "sha256": "a812eb11c6334b72bab5e0d41b0dfaff7e35d655aa3675f6d12dbf5d083fc193",
+    "sha256_in_prefix": "a812eb11c6334b72bab5e0d41b0dfaff7e35d655aa3675f6d12dbf5d083fc193",
+    "size_in_bytes": 7374
+   },
+   {
+    "_path": "Library/lib/boost_math_c99f.lib",
+    "path_type": "hardlink",
+    "sha256": "d753421a8439808cfa53eb9a599c10be3e0482ff3b93e228d8dae58ab2f29bb3",
+    "sha256_in_prefix": "d753421a8439808cfa53eb9a599c10be3e0482ff3b93e228d8dae58ab2f29bb3",
+    "size_in_bytes": 7512
+   },
+   {
+    "_path": "Library/lib/boost_math_c99l.lib",
+    "path_type": "hardlink",
+    "sha256": "6876ab929e82f4e37331c59119ab496bf0c358276ed5abd4feb26c9af24c2bb7",
+    "sha256_in_prefix": "6876ab929e82f4e37331c59119ab496bf0c358276ed5abd4feb26c9af24c2bb7",
+    "size_in_bytes": 7512
+   },
+   {
+    "_path": "Library/lib/boost_math_tr1.lib",
+    "path_type": "hardlink",
+    "sha256": "d175b0493d9f66b2c24322e23d245e973421aa7872f14e6139eb54297ab6459f",
+    "sha256_in_prefix": "d175b0493d9f66b2c24322e23d245e973421aa7872f14e6139eb54297ab6459f",
+    "size_in_bytes": 6182
+   },
+   {
+    "_path": "Library/lib/boost_math_tr1f.lib",
+    "path_type": "hardlink",
+    "sha256": "ed62a4f02abee56cc75d470868dbdd19231cac4964ef40af46d2609b21789438",
+    "sha256_in_prefix": "ed62a4f02abee56cc75d470868dbdd19231cac4964ef40af46d2609b21789438",
+    "size_in_bytes": 6318
+   },
+   {
+    "_path": "Library/lib/boost_math_tr1l.lib",
+    "path_type": "hardlink",
+    "sha256": "b8027a37ef2ceb3b8e8469c15606e8a9c969196325ed6517674f89fab5c9ac8b",
+    "sha256_in_prefix": "b8027a37ef2ceb3b8e8469c15606e8a9c969196325ed6517674f89fab5c9ac8b",
+    "size_in_bytes": 6318
+   },
+   {
+    "_path": "Library/lib/boost_nowide.lib",
+    "path_type": "hardlink",
+    "sha256": "d4769ec28d16a82b94785f2c7479f4826474afe6c5373b1f57aa1a4f97fab9bb",
+    "sha256_in_prefix": "d4769ec28d16a82b94785f2c7479f4826474afe6c5373b1f57aa1a4f97fab9bb",
+    "size_in_bytes": 21772
+   },
+   {
+    "_path": "Library/lib/boost_prg_exec_monitor.lib",
+    "path_type": "hardlink",
+    "sha256": "6351cc90ffd3c06e90d1022ac87f920b3fb10064d7c7d796c0a4b605b888fa2b",
+    "sha256_in_prefix": "6351cc90ffd3c06e90d1022ac87f920b3fb10064d7c7d796c0a4b605b888fa2b",
+    "size_in_bytes": 14614
+   },
+   {
+    "_path": "Library/lib/boost_process.lib",
+    "path_type": "hardlink",
+    "sha256": "b693501b943b51eaebc68fe9b8fe6c63d6432bae2633e8c073c60b4b118685ef",
+    "sha256_in_prefix": "b693501b943b51eaebc68fe9b8fe6c63d6432bae2633e8c073c60b4b118685ef",
+    "size_in_bytes": 38808
+   },
+   {
+    "_path": "Library/lib/boost_program_options.lib",
+    "path_type": "hardlink",
+    "sha256": "e976218af834a5249f0f143f9fe15dbcc6144ba67688da49a6e734ba82b5dc17",
+    "sha256_in_prefix": "e976218af834a5249f0f143f9fe15dbcc6144ba67688da49a6e734ba82b5dc17",
+    "size_in_bytes": 458784
+   },
+   {
+    "_path": "Library/lib/boost_random.lib",
+    "path_type": "hardlink",
+    "sha256": "e9656c18c4fa85b6b7ddd61894d8de099658a6ef125e266408548fff84bf1988",
+    "sha256_in_prefix": "e9656c18c4fa85b6b7ddd61894d8de099658a6ef125e266408548fff84bf1988",
+    "size_in_bytes": 3626
+   },
+   {
+    "_path": "Library/lib/boost_regex.lib",
+    "path_type": "hardlink",
+    "sha256": "57326a4cb4edd9b747b33c6ffb76a2616224680b8ed812b7b3fa8e8be22b088b",
+    "sha256_in_prefix": "57326a4cb4edd9b747b33c6ffb76a2616224680b8ed812b7b3fa8e8be22b088b",
+    "size_in_bytes": 2948
+   },
+   {
+    "_path": "Library/lib/boost_serialization.lib",
+    "path_type": "hardlink",
+    "sha256": "5c417250cd0f0dba93f1ba31d5d55d7e0e3976ba76e1469681cfd6d8abfca291",
+    "sha256_in_prefix": "5c417250cd0f0dba93f1ba31d5d55d7e0e3976ba76e1469681cfd6d8abfca291",
+    "size_in_bytes": 199018
+   },
+   {
+    "_path": "Library/lib/boost_stacktrace_from_exception.lib",
+    "path_type": "hardlink",
+    "sha256": "7562e733003a7e012bd3ce62bae308146ee7a1fea1d0c431175e347320b25e46",
+    "sha256_in_prefix": "7562e733003a7e012bd3ce62bae308146ee7a1fea1d0c431175e347320b25e46",
+    "size_in_bytes": 3136
+   },
+   {
+    "_path": "Library/lib/boost_stacktrace_noop.lib",
+    "path_type": "hardlink",
+    "sha256": "4a69a323ad12bd13162614f875e40d01f1173efbf8589813fa58e3c3ae9544e4",
+    "sha256_in_prefix": "4a69a323ad12bd13162614f875e40d01f1173efbf8589813fa58e3c3ae9544e4",
+    "size_in_bytes": 6462
+   },
+   {
+    "_path": "Library/lib/boost_stacktrace_windbg.lib",
+    "path_type": "hardlink",
+    "sha256": "5e321e922da83fb5883e37f48b38524b9c2ecc78fececf5fa0b0d02baf160a98",
+    "sha256_in_prefix": "5e321e922da83fb5883e37f48b38524b9c2ecc78fececf5fa0b0d02baf160a98",
+    "size_in_bytes": 6504
+   },
+   {
+    "_path": "Library/lib/boost_stacktrace_windbg_cached.lib",
+    "path_type": "hardlink",
+    "sha256": "9352930c8adad61f9e8d9b9f5f274df0686989a8a8b70b1da4e1bddd199ba4ec",
+    "sha256_in_prefix": "9352930c8adad61f9e8d9b9f5f274df0686989a8a8b70b1da4e1bddd199ba4ec",
+    "size_in_bytes": 6652
+   },
+   {
+    "_path": "Library/lib/boost_thread.lib",
+    "path_type": "hardlink",
+    "sha256": "a72a1d861949c22f87d86094c9c1b46b8323e8bd2f2a3fb9055f4b5351a761b8",
+    "sha256_in_prefix": "a72a1d861949c22f87d86094c9c1b46b8323e8bd2f2a3fb9055f4b5351a761b8",
+    "size_in_bytes": 27774
+   },
+   {
+    "_path": "Library/lib/boost_timer.lib",
+    "path_type": "hardlink",
+    "sha256": "9753b47d081bc92a26468c0811af96be1ee17c09f04ed95c77fc89d25fe470fc",
+    "sha256_in_prefix": "9753b47d081bc92a26468c0811af96be1ee17c09f04ed95c77fc89d25fe470fc",
+    "size_in_bytes": 14308
+   },
+   {
+    "_path": "Library/lib/boost_type_erasure.lib",
+    "path_type": "hardlink",
+    "sha256": "a608dc5c098b51e4516b2b0a7a7cad1aa24c4607db0cfbd00b16132d1d5bd1b5",
+    "sha256_in_prefix": "a608dc5c098b51e4516b2b0a7a7cad1aa24c4607db0cfbd00b16132d1d5bd1b5",
+    "size_in_bytes": 7206
+   },
+   {
+    "_path": "Library/lib/boost_unit_test_framework.lib",
+    "path_type": "hardlink",
+    "sha256": "b2f9a9c5ddb8d3aba8964b9cb414959ef3067153ce4a26a5cc613558daf2b99a",
+    "sha256_in_prefix": "b2f9a9c5ddb8d3aba8964b9cb414959ef3067153ce4a26a5cc613558daf2b99a",
+    "size_in_bytes": 296386
+   },
+   {
+    "_path": "Library/lib/boost_url.lib",
+    "path_type": "hardlink",
+    "sha256": "993bf53b6cccf4bad96732438cd77e22ab94cc20dafc1ef7b6913a9b4b506a98",
+    "sha256_in_prefix": "993bf53b6cccf4bad96732438cd77e22ab94cc20dafc1ef7b6913a9b4b506a98",
+    "size_in_bytes": 268424
+   },
+   {
+    "_path": "Library/lib/boost_wave.lib",
+    "path_type": "hardlink",
+    "sha256": "47f561e3300b456145767d7e090b1cb7043974263d10725e571277a66d0e2b18",
+    "sha256_in_prefix": "47f561e3300b456145767d7e090b1cb7043974263d10725e571277a66d0e2b18",
+    "size_in_bytes": 190850
+   },
+   {
+    "_path": "Library/lib/boost_wserialization.lib",
+    "path_type": "hardlink",
+    "sha256": "d8d776aa2ebf29318a5f7a9e020a0a1d0248697015db80bd01c865f182079d1a",
+    "sha256_in_prefix": "d8d776aa2ebf29318a5f7a9e020a0a1d0248697015db80bd01c865f182079d1a",
+    "size_in_bytes": 91074
+   },
+   {
+    "_path": "Library/lib/libboost_exception.lib",
+    "path_type": "hardlink",
+    "sha256": "74f777d23397cc086f0416b82227308d9a92240bc1fafc2365c322413b49faf3",
+    "sha256_in_prefix": "74f777d23397cc086f0416b82227308d9a92240bc1fafc2365c322413b49faf3",
+    "size_in_bytes": 1420
+   },
+   {
+    "_path": "Library/lib/libboost_test_exec_monitor.lib",
+    "path_type": "hardlink",
+    "sha256": "507a2280a2bea35845240daf462e39b2ae2ae3b517e874b513913d34c24995be",
+    "sha256_in_prefix": "507a2280a2bea35845240daf462e39b2ae2ae3b517e874b513913d34c24995be",
+    "size_in_bytes": 7222488
+   }
+  ],
+  "paths_version": 1
+ },
+ "sha256": "e82a6fdfc93a7fa72b188ba2bcc0f740d564cf742c001d2b58f15f1c6e0e6437",
+ "size": 2550006,
+ "subdir": "win-64",
+ "timestamp": 1790024540941,
+ "url": "https://conda.anaconda.org/conda-forge/win-64/libboost-1.90.0-h9dfe17d_3.conda",
+ "version": "1.90.0"
+}

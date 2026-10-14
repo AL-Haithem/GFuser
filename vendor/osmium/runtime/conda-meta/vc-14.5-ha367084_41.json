@@ -1,0 +1,32 @@
+{
+ "_requested_specs": [],
+ "build": "ha367084_41",
+ "build_number": 41,
+ "channel": "https://conda.anaconda.org/conda-forge/win-64",
+ "constrains": [],
+ "depends": [
+  "vc14_runtime >=14.51.36247"
+ ],
+ "extracted_package_dir": "",
+ "files": [],
+ "fn": "vc-14.5-ha367084_41.conda",
+ "license": "BSD-3-Clause",
+ "link": {
+  "source": "",
+  "type": 1
+ },
+ "md5": "aa805b5522c2a98fa286e551a1f48546",
+ "name": "vc",
+ "package_tarball_full_path": "",
+ "paths_data": {
+  "paths": [],
+  "paths_version": 1
+ },
+ "sha256": "35444c55a92e2f7f7ba26bc70f81e56e52344f7d064c0fd4b40a46a58517b79c",
+ "size": 21383,
+ "subdir": "win-64",
+ "timestamp": 1785359368566,
+ "track_features": "vc14",
+ "url": "https://conda.anaconda.org/conda-forge/win-64/vc-14.5-ha367084_41.conda",
+ "version": "14.5"
+}

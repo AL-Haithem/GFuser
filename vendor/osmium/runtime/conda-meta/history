@@ -1,0 +1,17 @@
+==> 2026-10-14 16:25:12 <==
+# cmd: C:\Users\haith\miniforge3\Scripts\conda-script.py create -n osmium-env -c conda-forge osmium-tool
+# conda version: 26.7.2
++conda-forge/win-64::bzip2-1.0.8-h0ad9c76_10
++conda-forge/win-64::libboost-1.90.0-h9dfe17d_3
++conda-forge/win-64::libexpat-2.8.5-hac47afa_0
++conda-forge/win-64::libiconv-1.18-hc1393d2_3
++conda-forge/win-64::liblzma-5.8.3-hfd05255_1
++conda-forge/win-64::libzlib-1.3.2-hfd05255_3
++conda-forge/win-64::lz4-c-1.10.0-h6a83c73_2
++conda-forge/win-64::osmium-tool-1.19.1-h60971b7_0
++conda-forge/win-64::ucrt-10.0.26100.0-h57928b3_0
++conda-forge/win-64::vc-14.5-ha367084_41
++conda-forge/win-64::vc14_runtime-14.51.36247-habf1de7_41
++conda-forge/win-64::vcomp14-14.51.36247-habf1de7_41
++conda-forge/win-64::zstd-1.5.7-h534d264_7
+# update specs: ['osmium-tool']

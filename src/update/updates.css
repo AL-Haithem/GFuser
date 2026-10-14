@@ -26,3 +26,9 @@
 .toggle-row input:checked + .switch-track span { transform: translateX(16px); }
 .toggle-row input:focus-visible + .switch-track { outline: 2px solid var(--accent); outline-offset: 3px; }
 .update-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 8px; padding-top: 13px; border-top: 1px solid var(--line); }
+.install-confirmation-backdrop { z-index: 30; }
+.install-confirmation-card { width: min(460px, 100%); }
+.install-confirmation-card .modal-header { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 12px; }
+.install-confirmation-card .modal-header h2 { font-size: 19px; }
+.install-confirmation-card > p { color: var(--muted); font-size: 13px; line-height: 1.6; }
+.install-confirmation-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 8px; margin-top: 22px; }

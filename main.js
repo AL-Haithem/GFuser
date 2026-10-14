@@ -1,12 +1,15 @@
-const { app, BrowserWindow, dialog, ipcMain, net, protocol, shell } = require('electron');
-const fs = require('fs');
-const path = require('path');
-const { pathToFileURL } = require('url');
+import { app, BrowserWindow, dialog, ipcMain, net, protocol, shell } from 'electron';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import updater from 'electron-updater';
+import { checkOsmium } from './tools/osmium.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const { autoUpdater } = updater;
 
 const legacyUserDataPath = app.getPath('userData');
 app.setPath('userData', path.join(app.getPath('documents'), 'GFuser'));
-
-const { autoUpdater } = require('electron-updater');
 
 let appSettings = { automaticUpdatesEnabled: true, projects: [], theme: 'light' };
 let updateState = {
@@ -31,7 +34,7 @@ function createWindow() {
     minHeight: 680,
     backgroundColor: '#f4f5f1',
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
+      preload: path.join(__dirname, 'dist', 'preload.cjs'),
       contextIsolation: true,
       nodeIntegration: false,
       enableRemoteModule: false,
@@ -52,6 +55,12 @@ function getAppSettingsPath() {
 
 function getProjectsRootPath() {
   return path.join(app.getPath('userData'), 'prs');
+}
+
+function getOsmiumRuntimePath() {
+  return app.isPackaged
+    ? path.join(process.resourcesPath, 'tools', 'osmium')
+    : path.join(__dirname, 'vendor', 'osmium', 'runtime');
 }
 
 function getSafeProjectFolderName(name) {
@@ -279,7 +288,7 @@ async function checkForUpdates() {
 
 function configureAutoUpdater() {
   autoUpdater.autoDownload = appSettings.automaticUpdatesEnabled;
-  autoUpdater.autoInstallOnAppQuit = true;
+  autoUpdater.autoInstallOnAppQuit = false;
   autoUpdater.on('checking-for-update', () => {
     publishUpdateState({ status: 'checking', progress: 0, message: 'Checking for updates...' });
   });
@@ -334,6 +343,9 @@ app.whenReady().then(() => {
   configureAutoUpdater();
 
   ipcMain.handle('get-app-data', () => ({ projects: appSettings.projects, theme: appSettings.theme }));
+  ipcMain.handle('get-tool-statuses', () => Promise.all([
+    checkOsmium(getOsmiumRuntimePath()),
+  ]));
   ipcMain.handle('save-projects', (_event, projects) => persistProjects(projects));
   ipcMain.handle('select-project-files', async (event) => {
     const result = await dialog.showOpenDialog(BrowserWindow.fromWebContents(event.sender), {

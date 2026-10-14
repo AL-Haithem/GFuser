@@ -1,0 +1,149 @@
+{
+ "_requested_specs": [],
+ "build": "h6a83c73_2",
+ "build_number": 2,
+ "channel": "https://conda.anaconda.org/conda-forge/win-64",
+ "constrains": [],
+ "depends": [
+  "vc >=14.3,<15",
+  "vc14_runtime >=14.44.35208",
+  "ucrt >=10.0.20348.0"
+ ],
+ "extracted_package_dir": "",
+ "files": [
+  "Library/bin/lz4.dll",
+  "Library/bin/lz4.exe",
+  "Library/include/lz4.h",
+  "Library/include/lz4file.h",
+  "Library/include/lz4frame.h",
+  "Library/include/lz4hc.h",
+  "Library/lib/cmake/lz4/lz4Config.cmake",
+  "Library/lib/cmake/lz4/lz4ConfigVersion.cmake",
+  "Library/lib/cmake/lz4/lz4Targets-release.cmake",
+  "Library/lib/cmake/lz4/lz4Targets.cmake",
+  "Library/lib/lz4.lib",
+  "Library/lib/pkgconfig/liblz4.pc",
+  "Library/share/man/man1/lz4.1",
+  "etc/conda/test-files/lz4-c/0/test_shared_cmake/CMakeLists.txt"
+ ],
+ "fn": "lz4-c-1.10.0-h6a83c73_2.conda",
+ "license": "BSD-2-Clause",
+ "link": {
+  "source": "",
+  "type": 1
+ },
+ "md5": "3e0691cb20fcaf922df78ccea08b771a",
+ "name": "lz4-c",
+ "package_tarball_full_path": "",
+ "paths_data": {
+  "paths": [
+   {
+    "_path": "Library/bin/lz4.dll",
+    "path_type": "hardlink",
+    "sha256": "4d747c9c0d4ad4d5d3b205da03920dc304719f0a4f12e1ea83c2b5cbde27a89f",
+    "sha256_in_prefix": "4d747c9c0d4ad4d5d3b205da03920dc304719f0a4f12e1ea83c2b5cbde27a89f",
+    "size_in_bytes": 126464
+   },
+   {
+    "_path": "Library/bin/lz4.exe",
+    "path_type": "hardlink",
+    "sha256": "b44491c1b00bd0a2369466bbf115f94f8f5e2c0cbbbf618a47039ae5fb7f92ac",
+    "sha256_in_prefix": "b44491c1b00bd0a2369466bbf115f94f8f5e2c0cbbbf618a47039ae5fb7f92ac",
+    "size_in_bytes": 193024
+   },
+   {
+    "_path": "Library/include/lz4.h",
+    "path_type": "hardlink",
+    "sha256": "26b82efc53d1570f3b54eef02e9c4764c1ad374ff03cac04e2ced5ea4d4c552f",
+    "sha256_in_prefix": "26b82efc53d1570f3b54eef02e9c4764c1ad374ff03cac04e2ced5ea4d4c552f",
+    "size_in_bytes": 46014
+   },
+   {
+    "_path": "Library/include/lz4file.h",
+    "path_type": "hardlink",
+    "sha256": "400ed90bc74324abcf338d37235dd81aa431fd815c22db4b369b88c12b213115",
+    "sha256_in_prefix": "400ed90bc74324abcf338d37235dd81aa431fd815c22db4b369b88c12b213115",
+    "size_in_bytes": 3317
+   },
+   {
+    "_path": "Library/include/lz4frame.h",
+    "path_type": "hardlink",
+    "sha256": "b845db4b7ee1bfa64b8f641a94f62e7f636a8b5d673cc61766413782283aaad1",
+    "sha256_in_prefix": "b845db4b7ee1bfa64b8f641a94f62e7f636a8b5d673cc61766413782283aaad1",
+    "size_in_bytes": 36085
+   },
+   {
+    "_path": "Library/include/lz4hc.h",
+    "path_type": "hardlink",
+    "sha256": "e43824e8a9ba16f54100c4ccbccfa5782a858ca9ab83c48aac303fea3e76e21e",
+    "sha256_in_prefix": "e43824e8a9ba16f54100c4ccbccfa5782a858ca9ab83c48aac303fea3e76e21e",
+    "size_in_bytes": 20308
+   },
+   {
+    "_path": "Library/lib/cmake/lz4/lz4Config.cmake",
+    "path_type": "hardlink",
+    "sha256": "8788336b000ee42fcc2cebfa5d90a95189e1b5107d25877d2cb462a0b0d76d63",
+    "sha256_in_prefix": "8788336b000ee42fcc2cebfa5d90a95189e1b5107d25877d2cb462a0b0d76d63",
+    "size_in_bytes": 958
+   },
+   {
+    "_path": "Library/lib/cmake/lz4/lz4ConfigVersion.cmake",
+    "path_type": "hardlink",
+    "sha256": "b0d513b96a319efe1f60b0a82d2424326108f5c60c05579e7f72add9b597e846",
+    "sha256_in_prefix": "b0d513b96a319efe1f60b0a82d2424326108f5c60c05579e7f72add9b597e846",
+    "size_in_bytes": 2830
+   },
+   {
+    "_path": "Library/lib/cmake/lz4/lz4Targets-release.cmake",
+    "path_type": "hardlink",
+    "sha256": "f675609f14008b01da4625bfce647fbc0cde2afb17f53a9f6fabcd998af6b985",
+    "sha256_in_prefix": "f675609f14008b01da4625bfce647fbc0cde2afb17f53a9f6fabcd998af6b985",
+    "size_in_bytes": 899
+   },
+   {
+    "_path": "Library/lib/cmake/lz4/lz4Targets.cmake",
+    "path_type": "hardlink",
+    "sha256": "d1411b9b98e4a032763820cad2cf660c4480389987fab22716efa5e6967fc5d2",
+    "sha256_in_prefix": "d1411b9b98e4a032763820cad2cf660c4480389987fab22716efa5e6967fc5d2",
+    "size_in_bytes": 4404
+   },
+   {
+    "_path": "Library/lib/lz4.lib",
+    "path_type": "hardlink",
+    "sha256": "c24ecf8ee18f40a17465778c599147d3c5d74a5339eaf132d61dde8f6779eaa5",
+    "sha256_in_prefix": "c24ecf8ee18f40a17465778c599147d3c5d74a5339eaf132d61dde8f6779eaa5",
+    "size_in_bytes": 24590
+   },
+   {
+    "_path": "Library/lib/pkgconfig/liblz4.pc",
+    "file_mode": "text",
+    "path_type": "hardlink",
+    "prefix_placeholder": "D:/bld/bld/rattler-build_lz4-c_1786717127/h_env",
+    "sha256": "31d7827d29d8bffac770cfb3be5a66e5fe2b21c5ec107ff8d08f1caf962fcacc",
+    "sha256_in_prefix": "9368aeda1cf52b6a494b98c89a699759c2a6db9be01c1567a56a824c250fbfed",
+    "size_in_bytes": 455
+   },
+   {
+    "_path": "Library/share/man/man1/lz4.1",
+    "path_type": "hardlink",
+    "sha256": "84e711b1283c2b79f5c5d225ed3dbe70a516e0b6bdda5279f395bd3d12ea7d19",
+    "sha256_in_prefix": "84e711b1283c2b79f5c5d225ed3dbe70a516e0b6bdda5279f395bd3d12ea7d19",
+    "size_in_bytes": 10666
+   },
+   {
+    "_path": "etc/conda/test-files/lz4-c/0/test_shared_cmake/CMakeLists.txt",
+    "path_type": "hardlink",
+    "sha256": "effb94887f0e1c75551eb9e4ccceb001b7bf43c68e06d15ce17671717136b527",
+    "sha256_in_prefix": "effb94887f0e1c75551eb9e4ccceb001b7bf43c68e06d15ce17671717136b527",
+    "size_in_bytes": 240
+   }
+  ],
+  "paths_version": 1
+ },
+ "sha256": "6824e36be0f95ae516dc36dddd18f69cbad0e4e07906fcb10a5f26a8dc471903",
+ "size": 150673,
+ "subdir": "win-64",
+ "timestamp": 1786717127870,
+ "url": "https://conda.anaconda.org/conda-forge/win-64/lz4-c-1.10.0-h6a83c73_2.conda",
+ "version": "1.10.0"
+}

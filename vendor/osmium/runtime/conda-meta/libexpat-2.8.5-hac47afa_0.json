@@ -1,0 +1,45 @@
+{
+ "_requested_specs": [],
+ "build": "hac47afa_0",
+ "build_number": 0,
+ "channel": "https://conda.anaconda.org/conda-forge/win-64",
+ "constrains": [
+  "expat 2.8.5.*"
+ ],
+ "depends": [
+  "ucrt >=10.0.20348.0",
+  "vc >=14.3,<15",
+  "vc14_runtime >=14.44.35208"
+ ],
+ "extracted_package_dir": "",
+ "files": [
+  "Library/bin/libexpat.dll"
+ ],
+ "fn": "libexpat-2.8.5-hac47afa_0.conda",
+ "license": "MIT",
+ "link": {
+  "source": "",
+  "type": 1
+ },
+ "md5": "4969128c45f9e71adbb6a1696679ce7f",
+ "name": "libexpat",
+ "package_tarball_full_path": "",
+ "paths_data": {
+  "paths": [
+   {
+    "_path": "Library/bin/libexpat.dll",
+    "path_type": "hardlink",
+    "sha256": "c6e54dea938a9c62e545554a21723ab054af03ddcfa6389d1abd912c85f64880",
+    "sha256_in_prefix": "c6e54dea938a9c62e545554a21723ab054af03ddcfa6389d1abd912c85f64880",
+    "size_in_bytes": 271872
+   }
+  ],
+  "paths_version": 1
+ },
+ "sha256": "70c73d9fd24ad996f2821d1501adae2ca70984b4e2d8faed76227f348ce86078",
+ "size": 72107,
+ "subdir": "win-64",
+ "timestamp": 1790346254561,
+ "url": "https://conda.anaconda.org/conda-forge/win-64/libexpat-2.8.5-hac47afa_0.conda",
+ "version": "2.8.5"
+}

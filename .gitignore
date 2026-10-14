@@ -7,3 +7,8 @@ dist/
 .vscode/
 .DS_Store
 Thumbs.db
+release
+
+
+# Original archive (runtime is already extracted)
+vendor/osmium/osmium-env-win64.tar.gz

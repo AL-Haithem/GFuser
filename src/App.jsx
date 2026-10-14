@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Check, X } from 'lucide-react';
+import { Check, RefreshCw, X } from 'lucide-react';
 import { saveTheme } from './appearance/appearance.js';
 import DashboardFeature from './dashboard/DashboardFeature.jsx';
 import { CreateProjectDialog, DeleteProjectDialog, ProjectsSidebar } from './projects/ProjectsFeature.jsx';
@@ -19,6 +19,7 @@ function App() {
   const [projectDeletionPending, setProjectDeletionPending] = useState(false);
   const [projectFilesPending, setProjectFilesPending] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [showInstallConfirmation, setShowInstallConfirmation] = useState(false);
   const [theme, setTheme] = useState('light');
   const [appDataLoaded, setAppDataLoaded] = useState(false);
   const [startupReady, setStartupReady] = useState(false);
@@ -28,6 +29,8 @@ function App() {
   const [updateState, setUpdateState] = useState({ status: 'idle', currentVersion: '', automaticUpdatesEnabled: true, progress: 0, message: 'Loading update settings...' });
   const [updateActionPending, setUpdateActionPending] = useState(false);
   const [preferencePending, setPreferencePending] = useState(false);
+  const [toolStatuses, setToolStatuses] = useState([{ id: 'osmium', name: 'Osmium', status: 'checking', detail: 'Checking availability...' }]);
+  const [toolCheckPending, setToolCheckPending] = useState(false);
 
   const updateStatusLabel = getUpdateStatusLabel(updateState.status);
 
@@ -106,7 +109,26 @@ function App() {
     return () => window.clearTimeout(timeout);
   }, [updateState.status, updateState.message]);
 
+  useEffect(() => {
+    if (showSettings) checkToolStatuses();
+  }, [showSettings]);
+
   function notify(message) { setToast(message); }
+
+  async function checkToolStatuses() {
+    if (!window.appAPI?.getToolStatuses) {
+      setToolStatuses([{ id: 'osmium', name: 'Osmium', status: 'unavailable', detail: 'Tool checks are only available in the desktop app.' }]);
+      return;
+    }
+    setToolCheckPending(true);
+    try {
+      setToolStatuses(await window.appAPI.getToolStatuses());
+    } catch (error) {
+      setToolStatuses([{ id: 'osmium', name: 'Osmium', status: 'unavailable', detail: error.message || 'Could not check tool availability.' }]);
+    } finally {
+      setToolCheckPending(false);
+    }
+  }
 
   function changeTheme(nextTheme) {
     setTheme(nextTheme);
@@ -233,8 +255,13 @@ function App() {
     } finally { setUpdateActionPending(false); }
   }
 
-  async function installUpdate() {
+  function installUpdate() {
+    setShowInstallConfirmation(true);
+  }
+
+  async function confirmInstallUpdate() {
     if (!window.appAPI?.installUpdate) { notify('Install actions are only available in the desktop app.'); return; }
+    setShowInstallConfirmation(false);
     setUpdateActionPending(true);
     try { await window.appAPI.installUpdate(); }
     catch (error) { setUpdateActionPending(false); notify(error.message || 'Could not install the update.'); }
@@ -259,11 +286,29 @@ function App() {
         updateStatusLabel={updateStatusLabel}
         updateActionPending={updateActionPending}
         preferencePending={preferencePending}
+        toolStatuses={toolStatuses}
+        toolCheckPending={toolCheckPending}
+        onCheckTools={checkToolStatuses}
         onCheckUpdates={checkForUpdates}
         onAutomaticUpdatesChange={changeAutomaticUpdates}
         onDownloadUpdate={downloadUpdate}
         onInstallUpdate={installUpdate}
       />
+      {showInstallConfirmation && (
+        <div className="modal-backdrop install-confirmation-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setShowInstallConfirmation(false); }}>
+          <section className="modal-card install-confirmation-card" role="dialog" aria-modal="true" aria-labelledby="install-confirmation-title">
+            <header className="modal-header">
+              <h2 id="install-confirmation-title">Ready to install update?</h2>
+              <button className="icon-button" type="button" onClick={() => setShowInstallConfirmation(false)} aria-label="Close confirmation"><X size={18} /></button>
+            </header>
+            <p>GFuser will close and open the Windows installer. You can review the installation options there. Your projects and settings will remain in place.</p>
+            <div className="install-confirmation-actions">
+              <button className="secondary-button" type="button" onClick={() => setShowInstallConfirmation(false)} disabled={updateActionPending}>Not now</button>
+              <button className="primary-button" type="button" onClick={confirmInstallUpdate} disabled={updateActionPending}><RefreshCw size={14} />Close and install</button>
+            </div>
+          </section>
+        </div>
+      )}
       {toast && <div className="toast" role="status"><Check size={15} />{toast}<button type="button" onClick={() => setToast('')} aria-label="Dismiss notification"><X size={15} /></button></div>}
     </div>
   );

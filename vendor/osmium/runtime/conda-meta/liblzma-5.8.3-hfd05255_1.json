@@ -1,0 +1,45 @@
+{
+ "_requested_specs": [],
+ "build": "hfd05255_1",
+ "build_number": 1,
+ "channel": "https://conda.anaconda.org/conda-forge/win-64",
+ "constrains": [
+  "xz 5.8.3.*"
+ ],
+ "depends": [
+  "ucrt >=10.0.20348.0",
+  "vc >=14.3,<15",
+  "vc14_runtime >=14.44.35208"
+ ],
+ "extracted_package_dir": "",
+ "files": [
+  "Library/bin/liblzma.dll"
+ ],
+ "fn": "liblzma-5.8.3-hfd05255_1.conda",
+ "license": "0BSD",
+ "link": {
+  "source": "",
+  "type": 1
+ },
+ "md5": "880a0c8549479b198af21ba5dc49b109",
+ "name": "liblzma",
+ "package_tarball_full_path": "",
+ "paths_data": {
+  "paths": [
+   {
+    "_path": "Library/bin/liblzma.dll",
+    "path_type": "hardlink",
+    "sha256": "8439ed3564a8dbbf6355e29c92e88fdf1f6dee096504149fc051104155c868a9",
+    "sha256_in_prefix": "8439ed3564a8dbbf6355e29c92e88fdf1f6dee096504149fc051104155c868a9",
+    "size_in_bytes": 188416
+   }
+  ],
+  "paths_version": 1
+ },
+ "sha256": "d36c4a1e1f80fd08e18a407e03622ff2f34dfdd022da6488ad19603dea19e6d5",
+ "size": 105809,
+ "subdir": "win-64",
+ "timestamp": 1786348717883,
+ "url": "https://conda.anaconda.org/conda-forge/win-64/liblzma-5.8.3-hfd05255_1.conda",
+ "version": "5.8.3"
+}

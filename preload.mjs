@@ -1,7 +1,8 @@
-const { contextBridge, ipcRenderer } = require('electron');
+import { contextBridge, ipcRenderer } from 'electron';
 
 contextBridge.exposeInMainWorld('appAPI', {
   getAppData: () => ipcRenderer.invoke('get-app-data'),
+  getToolStatuses: () => ipcRenderer.invoke('get-tool-statuses'),
   saveProjects: (projects) => ipcRenderer.invoke('save-projects', projects),
   selectProjectFiles: () => ipcRenderer.invoke('select-project-files'),
   openProjectDirectory: (projectId) => ipcRenderer.invoke('open-project-directory', projectId),

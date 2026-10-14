@@ -5,4 +5,17 @@
 .settings-section h3 { margin: 0; font-size: 13px; font-weight: 700; }
 .settings-divider { height: 1px; background: var(--line); }
 .settings-section .update-settings-feature { width: 100%; }
+.tool-section-heading { display: flex; width: 100%; align-items: center; justify-content: space-between; }
+.tool-status-list { width: 100%; }
+.tool-status-row { display: flex; align-items: flex-start; gap: 11px; padding: 12px 0; }
+.tool-status-icon { flex: none; margin-top: 1px; }
+.tool-status-icon.is-ready, .tool-status-label.is-ready { color: var(--accent-strong); }
+.tool-status-icon.is-checking { color: var(--muted); animation: tool-status-spin 1.2s linear infinite; }
+.tool-status-icon.is-missing, .tool-status-icon.is-unavailable, .tool-status-label.is-missing, .tool-status-label.is-unavailable { color: var(--danger); }
+.tool-status-copy { min-width: 0; flex: 1; }
+.tool-status-title { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; }
+.tool-status-label { color: var(--muted); font-size: 12px; font-weight: 700; }
+.tool-status-copy p { margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 1.45; overflow-wrap: anywhere; }
+.tool-check-spinning { animation: tool-status-spin 1.2s linear infinite; }
+@keyframes tool-status-spin { to { transform: rotate(360deg); } }
 @media (max-width: 520px) { .settings-card { max-height: calc(100vh - 24px); padding: 16px; } }
