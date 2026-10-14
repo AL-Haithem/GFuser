@@ -19,7 +19,7 @@ let updateState = {
 let mainWindow;
 
 protocol.registerSchemesAsPrivileged([{
-  scheme: 'GFuser',
+  scheme: 'gfuser',
   privileges: { standard: true, secure: true, supportFetchAPI: true, corsEnabled: true, stream: true },
 }]);
 
@@ -42,7 +42,7 @@ function createWindow() {
   if (!app.isPackaged && process.env.VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(process.env.VITE_DEV_SERVER_URL);
   } else {
-    mainWindow.loadURL('GFuser://app/index.html');
+    mainWindow.loadURL('gfuser://app/index.html');
   }
 }
 
@@ -316,7 +316,7 @@ function configureAutoUpdater() {
 
 app.whenReady().then(() => {
   const distDirectory = path.resolve(__dirname, 'dist');
-  protocol.handle('GFuser', (request) => {
+  protocol.handle('gfuser', (request) => {
     const requestedPath = decodeURIComponent(new URL(request.url).pathname).replace(/^[/\\]+/, '') || 'index.html';
     const filePath = path.resolve(distDirectory, requestedPath);
     if (!filePath.startsWith(`${distDirectory}${path.sep}`)) {
